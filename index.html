@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Scanner</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        #camera {
+            width: 100%;
+            max-width: 400px;
+            margin: 10px auto;
+            border: 2px solid #333;
+            border-radius: 8px;
+        }
+        #result {
+            margin: 15px;
+            padding: 10px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            word-break: break-all;
+        }
+        button {
+            padding: 10px 20px;
+            background: #0088cc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>QR Scanner</h2>
+    <video id="camera" playsinline autoplay></video>
+    <div id="result">Scanning...</div>
+    <button onclick="stopCamera()">Stop Camera</button>
+
+    <script>
+        const video = document.getElementById('camera');
+        const resultDiv = document.getElementById('result');
+        let scannerInterval;
+
+        // Запуск камеры
+        function startCamera() {
+            navigator.mediaDevices.getUserMedia({ 
+                video: { 
+                    facingMode: "environment"  // Используем заднюю камеру
+                } 
+            })
+            .then(stream => {
+                video.srcObject = stream;
+                startScanner();
+            })
+            .catch(err => {
+                resultDiv.textContent = "Error: " + err.message;
+            });
+        }
+
+        // Запуск сканера QR
+        function startScanner() {
+            scannerInterval = setInterval(() => {
+                if (video.readyState === video.HAVE_ENOUGH_DATA) {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = video.videoWidth;
+                    canvas.height = video.videoHeight;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                    
+                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const code = jsQR(imageData.data, imageData.width, imageData.height);
+                    
+                    if (code) {
+                        resultDiv.textContent = "Found QR: " + code.data;
+                        // Можно отправить данные в бота (если нужно)
+                        if (window.Telegram && Telegram.WebApp) {
+                            Telegram.WebApp.sendData(code.data);
+                        }
+                    }
+                }
+            }, 500); // Проверяем каждые 500 мс
+        }
+
+        // Остановка камеры
+        function stopCamera() {
+            if (video.srcObject) {
+                video.srcObject.getTracks().forEach(track => track.stop());
+                clearInterval(scannerInterval);
+                resultDiv.textContent = "Camera stopped";
+            }
+        }
+
+        // Запускаем при загрузке страницы
+        window.onload = startCamera;
+    </script>
+</body>
+</html>
