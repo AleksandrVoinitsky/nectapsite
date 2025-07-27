@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telegram QR Scanner</title>
+    <title>Сканер кодов маркировки</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         body {
@@ -11,76 +11,198 @@
             text-align: center;
             padding: 20px;
             background: #f5f5f5;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+        .container {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 0 auto;
+            max-width: 400px;
         }
         button {
             background: #0088cc;
             color: white;
             border: none;
-            padding: 12px 24px;
+            padding: 14px 28px;
             border-radius: 10px;
             font-size: 16px;
             cursor: pointer;
-            margin: 10px;
+            margin: 15px 0;
+            width: 100%;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background: #0077bb;
+        }
+        button:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
         }
         #result {
             margin: 20px auto;
             padding: 15px;
-            border: 1px solid #ddd;
+            border: 2px solid #e0e0e0;
             border-radius: 10px;
-            max-width: 300px;
+            max-width: 100%;
+            min-height: 60px;
             word-break: break-all;
+            background: #f9f9f9;
+            font-family: monospace;
+            text-align: left;
+        }
+        .status {
+            color: #666;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        .instructions {
+            background: #fff8e1;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-size: 14px;
+            text-align: left;
+        }
+        .valid {
+            border-color: #4caf50 !important;
+            background: #e8f5e9 !important;
+        }
+        .invalid {
+            border-color: #f44336 !important;
+            background: #ffebee !important;
         }
     </style>
 </head>
 <body>
-    <h1>Сканер QR-кода</h1>
-    <button onclick="scanQR()">Сканировать</button>
-    <div id="result">Здесь будет результат...</div>
+    <div class="container">
+        <h1>Сканер маркировки</h1>
+        <div class="instructions">
+            <strong>Как сканировать:</strong><br>
+            1. Наведите камеру на код маркировки<br>
+            2. Держите устройство устойчиво<br>
+            3. Убедитесь, что код хорошо освещен
+        </div>
+        
+        <button onclick="scanQR()" id="scanBtn">Сканировать код</button>
+        <div class="status" id="status">Готов к сканированию</div>
+        
+        <div id="result">Здесь появится отсканированный код</div>
+    </div>
 
     <script>
         // Инициализация Telegram WebApp
         Telegram.WebApp.ready();
-        Telegram.WebApp.expand();  // На весь экран
+        Telegram.WebApp.expand();
+        
+        const scanBtn = document.getElementById('scanBtn');
+        const resultDiv = document.getElementById('result');
+        const statusDiv = document.getElementById('status');
+        
+        // Проверка формата кода маркировки (базовый пример)
+        function isValidMarkingCode(code) {
+            // Базовые проверки для кодов "Честного знака":
+            // 1. Длина обычно 13 или более символов
+            // 2. Содержит цифры и буквы в верхнем регистре
+            // 3. Может начинаться с "01" или "21" для GS1
+            return code && code.length >= 13 && /^[A-Z0-9]+$/.test(code);
+        }
 
         function scanQR() {
-            // Проверяем доступные методы сканера
-            const scannerMethod = Telegram.WebApp.openQRScanner || Telegram.WebApp.showScanQrPopup;
-
-            if (!scannerMethod) {
-                Telegram.WebApp.showAlert("Ошибка: Сканер недоступен. Откройте в Telegram!");
-                return;
-            }
-
-            // Пытаемся вызвать сканер
-            try {
-                if (scannerMethod === Telegram.WebApp.openQRScanner) {
-                    Telegram.WebApp.openQRScanner()
-                        .then(data => showResult(data))
-                        .catch(handleError);
-                } else {
-                    Telegram.WebApp.showScanQrPopup({ text: "Наведите на QR-код" });
-                    
-                    // Обработчик результата (для showScanQrPopup)
-                    Telegram.WebApp.onEvent('qrTextReceived', showResult);
-                }
-            } catch (e) {
-                handleError(e);
+            scanBtn.disabled = true;
+            statusDiv.textContent = "Сканирование...";
+            resultDiv.className = '';
+            
+            // Пытаемся использовать самый новый метод
+            if (Telegram.WebApp.openQRScanner) {
+                Telegram.WebApp.openQRScanner()
+                    .then(data => {
+                        processScannedData(data);
+                    })
+                    .catch(err => {
+                        handleError(err);
+                    })
+                    .finally(() => {
+                        scanBtn.disabled = false;
+                    });
+            } 
+            // Если нет нового метода, пробуем старый
+            else if (Telegram.WebApp.showScanQrPopup) {
+                Telegram.WebApp.showScanQrPopup({ 
+                    text: "Наведите на код маркировки" 
+                });
+                
+                Telegram.WebApp.onEvent('qrTextReceived', (data) => {
+                    processScannedData(data);
+                    scanBtn.disabled = false;
+                });
+            } 
+            // Если ничего нет - показываем ошибку
+            else {
+                handleError("SCANNER_UNAVAILABLE");
+                scanBtn.disabled = false;
             }
         }
 
-        function showResult(data) {
-            document.getElementById("result").textContent = data;
-            Telegram.WebApp.showAlert("Отсканировано: " + data);
+        function processScannedData(data) {
+            if (!data) {
+                handleError("EMPTY_DATA");
+                return;
+            }
+            
+            // Убираем возможные пробелы и лишние символы
+            const cleanData = data.trim().toUpperCase();
+            
+            // Проверяем, похож ли код на маркировочный
+            if (isValidMarkingCode(cleanData)) {
+                resultDiv.textContent = cleanData;
+                resultDiv.classList.add('valid');
+                statusDiv.textContent = "Код распознан успешно!";
+                
+                // Можно сразу отправить данные в бота
+                try {
+                    Telegram.WebApp.sendData(JSON.stringify({
+                        type: "marking_code",
+                        code: cleanData
+                    }));
+                } catch (e) {
+                    console.log("Не удалось отправить данные боту", e);
+                }
+            } else {
+                resultDiv.textContent = cleanData;
+                resultDiv.classList.add('invalid');
+                statusDiv.textContent = "Это не похоже на код маркировки";
+                Telegram.WebApp.showAlert("Распознан не маркировочный код. Попробуйте еще раз.");
+            }
         }
 
         function handleError(err) {
-            const message = 
-                err === 'USER_DENIED' ? 'Вы отменили сканирование' :
-                err === 'CAMERA_UNAVAILABLE' ? 'Камера недоступна' :
-                'Ошибка: ' + err;
+            let message = "Ошибка: ";
             
+            switch(err) {
+                case 'USER_DENIED':
+                    message = "Сканирование отменено";
+                    break;
+                case 'CAMERA_UNAVAILABLE':
+                    message = "Камера недоступна. Проверьте разрешения";
+                    break;
+                case 'EMPTY_DATA':
+                    message = "Не удалось распознать код";
+                    break;
+                case 'SCANNER_UNAVAILABLE':
+                    message = "Сканер недоступен. Откройте в Telegram!";
+                    break;
+                default:
+                    message += err;
+            }
+            
+            statusDiv.textContent = message;
+            resultDiv.textContent = message;
+            resultDiv.classList.add('invalid');
             Telegram.WebApp.showAlert(message);
-            document.getElementById("result").textContent = message;
         }
     </script>
 </body>
