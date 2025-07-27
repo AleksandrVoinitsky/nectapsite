@@ -1,306 +1,1937 @@
 [
-    {
-        "id": 1,
-        "name": "Смартфон X Смартфон X Смартфон X Смартфон X Смартфон X",
-        "description": "Флагманский смартфон с OLED-экраном Флагманский смартфон с OLED-экраном Флагманский смартфон с OLED-экраном Флагманский смартфон с OLED-экраном Флагманский смартфон с OLED-экраном",
-        "price": 79999.9,
-        "image": "",
-        "category": "electronics"
-    },
-    {
-        "id": 2,
-        "name": "Ноутбук Pro",
-        "description": "16 ГБ RAM, SSD 1ТБ, процессор i7",
-        "price": 99999.0,
-        "image": "100000.webp",
-        "category": "electronics"
-    },
-    {
-        "id": 3,
-        "name": "Наушники Elite",
-        "description": "Беспроводные с шумоподавлением",
-        "price": 14999.5,
-        "image": "100001.webp",
-        "category": "electronics"
-    },
-    {
-        "id": 4,
-        "name": "Планшет Max",
-        "description": "12.9 дюймов, стилус в комплекте",
-        "price": 65999.0,
-        "image": "100002.webp",
-        "category": "electronics"
-    },
-    {
-        "id": 5,
-        "name": "Умные часы",
-        "description": "Мониторинг здоровья, водонепроницаемость",
-        "price": 12999.9,
-        "image": "100003.webp",
-        "category": "electronics"
-    },
-    {
-        "id": 6,
-        "name": "Футболка Classic",
-        "description": "100% хлопок, белая",
-        "price": 1999.0,
-        "image": "100004.webp",
-        "category": "clothing"
-    },
-    {
-        "id": 7,
-        "name": "Джинсы Slim",
-        "description": "Облегающие, синие",
-        "price": 4999.5,
-        "image": "100005.webp",
-        "category": "clothing"
-    },
-    {
-        "id": 8,
-        "name": "Куртка Winter",
-        "description": "Утепленная, с капюшоном",
-        "price": 8999.9,
-        "image": "100006.webp",
-        "category": "clothing"
-    },
-    {
-        "id": 9,
-        "name": "Рубашка Office",
-        "description": "Классическая, голубая",
-        "price": 3499.0,
-        "image": "100007.webp",
-        "category": "clothing"
-    },
-    {
-        "id": 10,
-        "name": "Кроссовки Sport",
-        "description": "Для бега, амортизация",
-        "price": 5999.5,
-        "image": "100008.webp",
-        "category": "clothing"
-    },
-    {
-        "id": 11,
-        "name": "Программирование на Python",
-        "description": "Полное руководство",
-        "price": 1599.0,
-        "image": "100009.webp",
-        "category": "books"
-    },
-    {
-        "id": 12,
-        "name": "Война и мир",
-        "description": "Л.Н. Толстой, 4 тома",
-        "price": 899.9,
-        "image": "1000010.webp",
-        "category": "books"
-    },
-    {
-        "id": 13,
-        "name": "JavaScript для профессионалов",
-        "description": "Современные практики",
-        "price": 2199.5,
-        "image": "1000011.webp",
-        "category": "books"
-    },
-    {
-        "id": 14,
-        "name": "Гарри Поттер и Дары Смерти",
-        "description": "Заключительная книга серии",
-        "price": 999.0,
-        "image": "100.webp",
-        "category": "books"
-    },
-    {
-        "id": 15,
-        "name": "Искусство алгоритмов",
-        "description": "Основы компьютерных наук",
-        "price": 2799.9,
-        "image": "200.webp",
-        "category": "books"
-    },
-    {
-        "id": 16,
-        "name": "Фотоаппарат Pro",
-        "description": "Зеркальный, 24 Мп",
-        "price": 45999.0,
-        "image": "300.webp",
-        "category": "electronics"
-    },
-    {
-        "id": 17,
-        "name": "Шорты Summer",
-        "description": "Дышащие, черные",
-        "price": 2499.5,
-        "image": "100000.webp",
-        "category": "clothing"
-    },
-    {
-        "id": 18,
-        "name": "React в действии",
-        "description": "Разработка современных приложений",
-        "price": 1899.9,
-        "image": "100001.webp",
-        "category": "books"
-    },
-    {
-        "id": 19,
-        "name": "Монитор Ultra",
-        "description": "4K, 32 дюйма",
-        "price": 34999.0,
-        "image": "100002.webp",
-        "category": "electronics"
-    },
-     {
-        "id": 20,
-        "name": "Смартфон X Смартфон X Смартфон X Смартфон X Смартфон X",
-        "description": "Флагманский смартфон с OLED-экраном Флагманский смартфон с OLED-экраном Флагманский смартфон с OLED-экраном Флагманский смартфон с OLED-экраном Флагманский смартфон с OLED-экраном",
-        "price": 79999.9,
-        "image": "",
-        "category": "electronics"
-    },
-    {
-        "id": 21,
-        "name": "Ноутбук Pro",
-        "description": "16 ГБ RAM, SSD 1ТБ, процессор i7",
-        "price": 99999.0,
-        "image": "100000.webp",
-        "category": "electronics"
-    },
-    {
-        "id": 22,
-        "name": "Наушники Elite",
-        "description": "Беспроводные с шумоподавлением",
-        "price": 14999.5,
-        "image": "100001.webp",
-        "category": "electronics"
-    },
-    {
-        "id": 23,
-        "name": "Планшет Max",
-        "description": "12.9 дюймов, стилус в комплекте",
-        "price": 65999.0,
-        "image": "100002.webp",
-        "category": "electronics"
-    },
-    {
-        "id": 24,
-        "name": "Умные часы",
-        "description": "Мониторинг здоровья, водонепроницаемость",
-        "price": 12999.9,
-        "image": "100003.webp",
-        "category": "electronics"
-    },
-    {
-        "id": 25,
-        "name": "Футболка Classic",
-        "description": "100% хлопок, белая",
-        "price": 1999.0,
-        "image": "100004.webp",
-        "category": "clothing"
-    },
-    {
-        "id": 26,
-        "name": "Джинсы Slim",
-        "description": "Облегающие, синие",
-        "price": 4999.5,
-        "image": "100005.webp",
-        "category": "clothing"
-    },
-    {
-        "id": 27,
-        "name": "Куртка Winter",
-        "description": "Утепленная, с капюшоном",
-        "price": 8999.9,
-        "image": "100006.webp",
-        "category": "clothing"
-    },
-    {
-        "id": 28,
-        "name": "Рубашка Office",
-        "description": "Классическая, голубая",
-        "price": 3499.0,
-        "image": "100007.webp",
-        "category": "clothing"
-    },
-    {
-        "id": 29,
-        "name": "Кроссовки Sport",
-        "description": "Для бега, амортизация",
-        "price": 5999.5,
-        "image": "100008.webp",
-        "category": "clothing"
-    },
-    {
-        "id": 30,
-        "name": "Программирование на Python",
-        "description": "Полное руководство",
-        "price": 1599.0,
-        "image": "100009.webp",
-        "category": "books"
-    },
-    {
-        "id": 31,
-        "name": "Война и мир",
-        "description": "Л.Н. Толстой, 4 тома",
-        "price": 899.9,
-        "image": "1000010.webp",
-        "category": "books"
-    },
-    {
-        "id": 32,
-        "name": "JavaScript для профессионалов",
-        "description": "Современные практики",
-        "price": 2199.5,
-        "image": "1000011.webp",
-        "category": "books"
-    },
-    {
-        "id": 33,
-        "name": "Гарри Поттер и Дары Смерти",
-        "description": "Заключительная книга серии",
-        "price": 999.0,
-        "image": "100.webp",
-        "category": "books"
-    },
-    {
-        "id": 34,
-        "name": "Искусство алгоритмов",
-        "description": "Основы компьютерных наук",
-        "price": 2799.9,
-        "image": "200.webp",
-        "category": "books"
-    },
-    {
-        "id": 35,
-        "name": "Фотоаппарат Pro",
-        "description": "Зеркальный, 24 Мп",
-        "price": 45999.0,
-        "image": "300.webp",
-        "category": "electronics"
-    },
-    {
-        "id": 36,
-        "name": "Шорты Summer",
-        "description": "Дышащие, черные",
-        "price": 2499.5,
-        "image": "100000.webp",
-        "category": "clothing"
-    },
-    {
-        "id": 37,
-        "name": "React в действии",
-        "description": "Разработка современных приложений",
-        "price": 1899.9,
-        "image": "100001.webp",
-        "category": "books"
-    },
-    {
-        "id": 38,
-        "name": "Монитор Ultra",
-        "description": "4K, 32 дюйма",
-        "price": 34999.0,
-        "image": "100002.webp",
-        "category": "electronics"
-    }
+  {
+    "id": 12,
+    "name": "Молоко Любимая чашка 3.2% 0.9л полипак",
+    "description": "шт",
+    "price": 85.0,
+    "article": 100000,
+    "image": "100000.webp"
+  },
+  {
+    "id": 13,
+    "name": "Молоко Любимая чашка 2.5% 1л тетрапак",
+    "description": "1/12",
+    "price": 83.0,
+    "article": 100001,
+    "image": "100001.webp"
+  },
+  {
+    "id": 14,
+    "name": "Молоко Любимая чашка 3.2% 1л тетрапак",
+    "description": "1/12",
+    "price": 86.0,
+    "article": 100002,
+    "image": "100002.webp"
+  },
+  {
+    "id": 15,
+    "name": "Молоко Любимая чашка 3.5% 1л тетрапак",
+    "description": "2/12",
+    "price": 88.0,
+    "article": 100003,
+    "image": "100003.webp"
+  },
+  {
+    "id": 16,
+    "name": "Сметана Любимая чашка 180г 20%",
+    "description": "1/10",
+    "price": 78.43,
+    "article": 100004,
+    "image": "100004.webp"
+  },
+  {
+    "id": 17,
+    "name": "Сметана Любимая Чашка 20% 380г",
+    "description": "1/4",
+    "price": 126.2,
+    "article": 100005,
+    "image": "100005.webp"
+  },
+  {
+    "id": 18,
+    "name": "Сметана Байкальская 20% 400г",
+    "description": "1/4",
+    "price": 210.1,
+    "article": 100006,
+    "image": "100006.webp"
+  },
+  {
+    "id": 19,
+    "name": "Сметана Байкальская 20% 200г",
+    "description": "1/10",
+    "price": 106.7,
+    "article": 100007,
+    "image": "100007.webp"
+  },
+  {
+    "id": 20,
+    "name": "Кефир Любимая чашка 2.5 % 0.9 полипак",
+    "description": "1/15",
+    "price": 70.0,
+    "article": 100008,
+    "image": "100008.webp"
+  },
+  {
+    "id": 21,
+    "name": "Кефир Любимая чашка обезжиренный 0.9 полипак",
+    "description": "0.9л полипак",
+    "price": 63.8,
+    "article": 100009,
+    "image": "100009.webp"
+  },
+  {
+    "id": 22,
+    "name": "Кефир  Байкальский 2.5 500г тетрапак",
+    "description": "1/10",
+    "price": 69.5,
+    "article": 100010,
+    "image": "100010.webp"
+  },
+  {
+    "id": 23,
+    "name": "Кефир Любимая чашка 2.5 % 0.93л бутылка",
+    "description": "1/6",
+    "price": 98.0,
+    "article": 100011,
+    "image": "100011.webp"
+  },
+  {
+    "id": 24,
+    "name": "Варенец Байкальский 3.2%",
+    "description": "1/10",
+    "price": 83.2,
+    "article": 100012,
+    "image": "100012.webp"
+  },
+  {
+    "id": 29,
+    "name": "Биойогурт Любимая чашка 2.5 % Клубничный пломбир т.топ",
+    "description": "1/6",
+    "price": 79.0,
+    "article": 100013,
+    "image": "100013.webp"
+  },
+  {
+    "id": 30,
+    "name": "Биойогурт Любимая чашка 2.5 % черника т.топ",
+    "description": "1/6",
+    "price": 79.0,
+    "article": 100014,
+    "image": "100014.webp"
+  },
+  {
+    "id": 31,
+    "name": "Биойогурт Любимая чашка 2.5 % Земляника т.топ",
+    "description": "1/6",
+    "price": 79.0,
+    "article": 100015,
+    "image": "100015.webp"
+  },
+  {
+    "id": 32,
+    "name": "Биойогурт Любимая чашка 2.5 % персик  т.топ",
+    "description": "1/6",
+    "price": 79.0,
+    "article": 100016,
+    "image": "100016.webp"
+  },
+  {
+    "id": 33,
+    "name": "Биойогурт Любимая чашка 2.5% Черешня т.топ",
+    "description": "1/6",
+    "price": 79.0,
+    "article": 100017,
+    "image": "100017.webp"
+  },
+  {
+    "id": 34,
+    "name": "Ряженка Байкальская 4%",
+    "description": "500г т.пак",
+    "price": 93.0,
+    "article": 100018,
+    "image": "100018.webp"
+  },
+  {
+    "id": 35,
+    "name": "Снежок 2.5% 500г тетра топ",
+    "description": "1/6",
+    "price": 65.9,
+    "article": 100019,
+    "image": "100019.webp"
+  },
+  {
+    "id": 36,
+    "name": "Сметана 20% 500г пленка",
+    "description": "500г плёнка",
+    "price": 237.0,
+    "article": 100020,
+    "image": "100020.webp"
+  },
+  {
+    "id": 37,
+    "name": "Творог обезжиренный  Байкальский 200г",
+    "description": "200г фас",
+    "price": 75.43,
+    "article": 100021,
+    "image": "100021.webp"
+  },
+  {
+    "id": 38,
+    "name": "Творог Байкальский 2%",
+    "description": "200г фас",
+    "price": 68.0,
+    "article": 100022,
+    "image": "100022.webp"
+  },
+  {
+    "id": 39,
+    "name": "Творог Байкальский 5%",
+    "description": "200г фас",
+    "price": 88.5,
+    "article": 100023,
+    "image": "100023.webp"
+  },
+  {
+    "id": 40,
+    "name": "Творог Байкальский 9%",
+    "description": "200г фас",
+    "price": 79.0,
+    "article": 100024,
+    "image": "100024.webp"
+  },
+  {
+    "id": 41,
+    "name": "Масло Байкальское 72.5%",
+    "description": "180г фас",
+    "price": 217.0,
+    "article": 100025,
+    "image": "100025.webp"
+  },
+  {
+    "id": 42,
+    "name": "Масло Крестьянское ЯНТА",
+    "description": "200г фас",
+    "price": 258.0,
+    "article": 100026,
+    "image": "100026.webp"
+  },
+  {
+    "id": 43,
+    "name": "Масло Бутербродное ЯНТА",
+    "description": "180г фас",
+    "price": 148.0,
+    "article": 100027,
+    "image": "100027.webp"
+  },
+  {
+    "id": 44,
+    "name": "Масло  Качугское ЯНТА 80%",
+    "description": "200г фас",
+    "price": 300.0,
+    "article": 100028,
+    "image": "100028.webp"
+  },
+  {
+    "id": 45,
+    "name": "Сгущёное молоко Байкальское 8.5% 380г ЯНТА",
+    "description": "1/15",
+    "price": 120.0,
+    "article": 100029,
+    "image": "100029.webp"
+  },
+  {
+    "id": 46,
+    "name": "Сгущёное Молоко Варёное Байкальское 8.5%",
+    "description": "1/15",
+    "price": 130.0,
+    "article": 100030,
+    "image": "100030.webp"
+  },
+  {
+    "id": 47,
+    "name": "Сгущёное Молоко  БАЙКАЛЬСКОЕ  ЯНТА 280г дой пак",
+    "description": "#",
+    "price": 92.0,
+    "article": 100031,
+    "image": "100031.webp"
+  },
+  {
+    "id": 48,
+    "name": "Сгущёные сливки с сахаром ЯНТА",
+    "description": "340г ключ крышка",
+    "price": 170.0,
+    "article": 100032,
+    "image": "100032.webp"
+  },
+  {
+    "id": 49,
+    "name": "Сыр MOZZARELLA  150г ЯНТА  в рассоле",
+    "description": "150г",
+    "price": 175.0,
+    "article": 100033,
+    "image": "100033.webp"
+  },
+  {
+    "id": 50,
+    "name": "Йогурт Греческий 10% ЯНТА 190г",
+    "description": "ЯНТА 190г",
+    "price": 70.0,
+    "article": 100034,
+    "image": "100034.webp"
+  },
+  {
+    "id": 51,
+    "name": "Сырок Любимая чашка  кокос",
+    "description": "1/10",
+    "price": 34.5,
+    "article": 100035,
+    "image": "100035.webp"
+  },
+  {
+    "id": 52,
+    "name": "Сырок Любимая чашка  карамель",
+    "description": "1/10",
+    "price": 34.5,
+    "article": 100036,
+    "image": "100036.webp"
+  },
+  {
+    "id": 53,
+    "name": "Сырок Любимая Чашка  Ваниль",
+    "description": "1/10",
+    "price": 34.5,
+    "article": 100037,
+    "image": "100037.webp"
+  },
+  {
+    "id": 54,
+    "name": "Сырок Любимая чашка  Клубника",
+    "description": "1/10",
+    "price": 34.5,
+    "article": 100038,
+    "image": "100038.webp"
+  },
+  {
+    "id": 55,
+    "name": "Сырок Любимая чашка  пломбир",
+    "description": "1/10",
+    "price": 34.5,
+    "article": 100039,
+    "image": "100039.webp"
+  },
+  {
+    "id": 56,
+    "name": "Сырок Любимая чашка Варёная сгущёнка",
+    "description": "1/10",
+    "price": 34.5,
+    "article": 100040,
+    "image": "100040.webp"
+  },
+  {
+    "id": 57,
+    "name": "Сырок Байкальский с изюмом",
+    "description": "100г",
+    "price": 62.5,
+    "article": 100041,
+    "image": "100041.webp"
+  },
+  {
+    "id": 58,
+    "name": "Сырок Байкальский с ванилином",
+    "description": "100гр",
+    "price": 62.5,
+    "article": 100042,
+    "image": "100042.webp"
+  },
+  {
+    "id": 59,
+    "name": "Десерт творожный Байкальский  150г карамель",
+    "description": "1/4",
+    "price": 72.69,
+    "article": 100043,
+    "image": "100043.webp"
+  },
+  {
+    "id": 60,
+    "name": "Десерт творожный Байкальский 150г пломбир",
+    "description": "1/4",
+    "price": 72.69,
+    "article": 100044,
+    "image": "100044.webp"
+  },
+  {
+    "id": 61,
+    "name": "Десерт творожный Байкальский 150г  шоколадный",
+    "description": "1/4",
+    "price": 72.69,
+    "article": 100045,
+    "image": "100045.webp"
+  },
+  {
+    "id": 62,
+    "name": "Десерт творожный Байкальский 150г  с ароматом ванили",
+    "description": "1/4",
+    "price": 72.69,
+    "article": 100046,
+    "image": "100046.webp"
+  },
+  {
+    "id": 63,
+    "name": "Десерт творожный Байкальский 150г  черешня",
+    "description": "1/4",
+    "price": 72.69,
+    "article": 100047,
+    "image": "100047.webp"
+  },
+  {
+    "id": 64,
+    "name": "Десерт молочный Байкальский 200г",
+    "description": "200г",
+    "price": 84.37,
+    "article": 100048,
+    "image": "100048.webp"
+  },
+  {
+    "id": 65,
+    "name": "Биойогурт термостатный 200г ЯНТА",
+    "description": "2.5% 200г",
+    "price": 38.0,
+    "article": 100049,
+    "image": "100049.webp"
+  },
+  {
+    "id": 66,
+    "name": "Ацидофилин термостатный ЯНТА  200г",
+    "description": "2.5 % 200г",
+    "price": 38.5,
+    "article": 100050,
+    "image": "100050.webp"
+  },
+  {
+    "id": 67,
+    "name": "Сыр MOZZARELLA  ЯНТА  250г круг",
+    "description": "250Г",
+    "price": 175.23,
+    "article": 100051,
+    "image": "100051.webp"
+  },
+  {
+    "id": 68,
+    "name": "Сыр плавленый ЯНТА Сливочный",
+    "description": "180г 40%",
+    "price": 118.2,
+    "article": 100052,
+    "image": "100052.webp"
+  },
+  {
+    "id": 69,
+    "name": "Сыр мягкий Кавказский ЯНТА",
+    "description": "45%",
+    "price": 772.2,
+    "article": 100053,
+    "image": "100053.webp"
+  },
+  {
+    "id": 70,
+    "name": "Сыр БРЫНЗА ЯНТА",
+    "description": "400г",
+    "price": 180.58,
+    "article": 100054,
+    "image": "100054.webp"
+  },
+  {
+    "id": 71,
+    "name": "Сыр СУЛУГУНИ ЯНТА",
+    "description": "45%",
+    "price": 245.0,
+    "article": 100055,
+    "image": "100055.webp"
+  },
+  {
+    "id": 72,
+    "name": "Сметана Байкальская 400г 30%",
+    "description": "1/4",
+    "price": 227.15,
+    "article": 100056,
+    "image": "100056.webp"
+  },
+  {
+    "id": 73,
+    "name": "Масло топлёное  Байкальское",
+    "description": "200г 99%",
+    "price": 238.6,
+    "article": 100057,
+    "image": "100057.webp"
+  },
+  {
+    "id": 74,
+    "name": "Масло  традиционное сливочное ЯНТА",
+    "description": "82.5% 200гр",
+    "price": 242.0,
+    "article": 100058,
+    "image": "100058.webp"
+  },
+  {
+    "id": 75,
+    "name": "Молоко Любимая чашка 1.5% 1л тетрапак",
+    "description": "1/12",
+    "price": 79.0,
+    "article": 100059,
+    "image": "100059.webp"
+  },
+  {
+    "id": 76,
+    "name": "Молоко Байкальское ТОПЛЁНОЕ 4%  ЯНТА",
+    "description": "1/12",
+    "price": 175.45,
+    "article": 100060,
+    "image": "100060.webp"
+  },
+  {
+    "id": 77,
+    "name": "Молоко Байкальское 3.5л%",
+    "description": "1/12",
+    "price": 157.85,
+    "article": 100061,
+    "image": "100061.webp"
+  },
+  {
+    "id": 78,
+    "name": "Молоко Байкальское 6%",
+    "description": "1/12",
+    "price": 180.0,
+    "article": 100062,
+    "image": "100062.webp"
+  },
+  {
+    "id": 79,
+    "name": "Молоко Байкальское 3.2%",
+    "description": "1/12",
+    "price": 151.8,
+    "article": 100063,
+    "image": "100063.webp"
+  },
+  {
+    "id": 80,
+    "name": "Молоко Байкальское 2.5л",
+    "description": "1/12",
+    "price": 146.3,
+    "article": 100064,
+    "image": "100064.webp"
+  },
+  {
+    "id": 81,
+    "name": "Сметана Любимая чашка 10% 380г",
+    "description": "1/10",
+    "price": 115.5,
+    "article": 100065,
+    "image": "100065.webp"
+  },
+  {
+    "id": 82,
+    "name": "Сметана любимая чашка 10% 180г",
+    "description": "1/10",
+    "price": 75.35,
+    "article": 100066,
+    "image": "100066.webp"
+  },
+  {
+    "id": 83,
+    "name": "Пахта ЯНТА",
+    "description": "1л полипак",
+    "price": 51.15,
+    "article": 100067,
+    "image": "100067.webp"
+  },
+  {
+    "id": 84,
+    "name": "Биойогурт Любимая чашка 2.5% малина смородина 450г полипак",
+    "description": "шт",
+    "price": 69.85,
+    "article": 100068,
+    "image": "100068.webp"
+  },
+  {
+    "id": 85,
+    "name": "Биойогурт Любимая чашка 2.5 % груша банан 450г полипак",
+    "description": "шт",
+    "price": 69.85,
+    "article": 100069,
+    "image": "100069.webp"
+  },
+  {
+    "id": 86,
+    "name": "Биойогурт Любимая чашка 450г земляника полипак",
+    "description": "шт",
+    "price": 69.85,
+    "article": 100070,
+    "image": "100070.webp"
+  },
+  {
+    "id": 87,
+    "name": "Биойогурт Любимая чашка 2.5 % персик 450г полипак",
+    "description": "шт",
+    "price": 69.85,
+    "article": 100071,
+    "image": "100071.webp"
+  },
+  {
+    "id": 88,
+    "name": "Биойогурт Любимая чашка 2.5 % Черешня 450г полипак",
+    "description": "шт",
+    "price": 69.85,
+    "article": 100072,
+    "image": "100072.webp"
+  },
+  {
+    "id": 89,
+    "name": "Биойогурт Любимая чашка 2.5 % черника  полипак",
+    "description": "шт",
+    "price": 69.85,
+    "article": 100073,
+    "image": "100073.webp"
+  },
+  {
+    "id": 90,
+    "name": "Майонез Провансаль 100г ЯНТА",
+    "description": "1/64",
+    "price": 22.5,
+    "article": 100074,
+    "image": "100074.webp"
+  },
+  {
+    "id": 91,
+    "name": "Майонез Провансаль 200г ЯНТА",
+    "description": "1/32",
+    "price": 60.6,
+    "article": 100075,
+    "image": "100075.webp"
+  },
+  {
+    "id": 92,
+    "name": "Майонез Провансаль ЯНТА 400г",
+    "description": "1/16",
+    "price": 94.0,
+    "article": 100076,
+    "image": "100076.webp"
+  },
+  {
+    "id": 93,
+    "name": "Майонез Провансаль 800г ЯНТА",
+    "description": "1/8",
+    "price": 205.8,
+    "article": 100077,
+    "image": "100077.webp"
+  },
+  {
+    "id": 94,
+    "name": "Майонез Провансаль 900г ЯНТА",
+    "description": "1/6",
+    "price": 216.0,
+    "article": 100078,
+    "image": "100078.webp"
+  },
+  {
+    "id": 95,
+    "name": "Майонез  Салатный 200г ЯНТА",
+    "description": "дой.пак",
+    "price": 47.4,
+    "article": 100079,
+    "image": "100079.webp"
+  },
+  {
+    "id": 96,
+    "name": "Майонез Салатный 400г ЯНТА",
+    "description": "1/16",
+    "price": 90.6,
+    "article": 100080,
+    "image": "100080.webp"
+  },
+  {
+    "id": 97,
+    "name": "Майонез Салатный 800г ЯНТА",
+    "description": "1/8",
+    "price": 174.0,
+    "article": 100081,
+    "image": "100081.webp"
+  },
+  {
+    "id": 98,
+    "name": "Соус майонезный 900г ЯНТА",
+    "description": "бидон 30%",
+    "price": 132.0,
+    "article": 100082,
+    "image": "100082.webp"
+  },
+  {
+    "id": 99,
+    "name": "Майонез Провансаль 10кг ЯНТА",
+    "description": "1шт",
+    "price": 1404.0,
+    "article": 100083,
+    "image": "100083.webp"
+  },
+  {
+    "id": 100,
+    "name": "Маргарин  Домашний  250г ЯНТА",
+    "description": "1/40",
+    "price": 46.2,
+    "article": 100084,
+    "image": "100084.webp"
+  },
+  {
+    "id": 101,
+    "name": "Аджика 100г ЯНТА",
+    "description": "1/15",
+    "price": 41.0,
+    "article": 100085,
+    "image": "100085.webp"
+  },
+  {
+    "id": 102,
+    "name": "Горчица  100г ЯНТА",
+    "description": "1/15",
+    "price": 42.6,
+    "article": 100086,
+    "image": "100086.webp"
+  },
+  {
+    "id": 103,
+    "name": "Кетчуп Шашлычный 300г ЯНТА",
+    "description": "дой пак",
+    "price": 61.25,
+    "article": 100087,
+    "image": "100087.webp"
+  },
+  {
+    "id": 104,
+    "name": "Кетчуп  Болгарский 300г ЯНТА",
+    "description": "дой.пак",
+    "price": 61.25,
+    "article": 100088,
+    "image": "100088.webp"
+  },
+  {
+    "id": 105,
+    "name": "Кетчуп Татарский 300г  ЯНТА",
+    "description": "дой.пак",
+    "price": 61.25,
+    "article": 100089,
+    "image": "100089.webp"
+  },
+  {
+    "id": 106,
+    "name": "Кетчуп  Барбекю 300г ЯНТА",
+    "description": "дой.пак",
+    "price": 61.25,
+    "article": 100090,
+    "image": "100090.webp"
+  },
+  {
+    "id": 107,
+    "name": "Кетчуп  Итальянский 300г ЯНТА",
+    "description": "дой.пак",
+    "price": 61.25,
+    "article": 100091,
+    "image": "100091.webp"
+  },
+  {
+    "id": 108,
+    "name": "Кетчуп Острый 300г ЯНТА",
+    "description": "дой.пак",
+    "price": 61.25,
+    "article": 100092,
+    "image": "100092.webp"
+  },
+  {
+    "id": 109,
+    "name": "Кетчуп Томатный 300г ЯНТА",
+    "description": "дой.пак",
+    "price": 61.25,
+    "article": 100093,
+    "image": "100093.webp"
+  },
+  {
+    "id": 110,
+    "name": "Кетчуп Грузинский 300г ЯНТА",
+    "description": "дой.пак",
+    "price": 61.25,
+    "article": 100094,
+    "image": "100094.webp"
+  },
+  {
+    "id": 111,
+    "name": "Спред Луговой 250г ЯНТА",
+    "description": "#",
+    "price": 41.0,
+    "article": 100095,
+    "image": "100095.webp"
+  },
+  {
+    "id": 112,
+    "name": "Йогурт Чудо питьевой 260г",
+    "description": "2.4% бутылка( в ассортименте)",
+    "price": 78.0,
+    "article": 100096,
+    "image": "100096.webp"
+  },
+  {
+    "id": 113,
+    "name": "Соус ЧИЛИ ЯНТА",
+    "description": "200г",
+    "price": 43.5,
+    "article": 100097,
+    "image": "100097.webp"
+  },
+  {
+    "id": 114,
+    "name": "Дрожжи 100г ЛЮКС",
+    "description": "1/20",
+    "price": 21.6,
+    "article": 100098,
+    "image": "100098.webp"
+  },
+  {
+    "id": 115,
+    "name": "Сыр ФЕТА",
+    "description": "200г",
+    "price": 143.0,
+    "article": 100099,
+    "image": "100099.webp"
+  },
+  {
+    "id": 116,
+    "name": "Плавленый продукт с сыром 70г",
+    "description": "Плавыч",
+    "price": 15.0,
+    "article": 100100,
+    "image": "100100.webp"
+  },
+  {
+    "id": 117,
+    "name": "Сыр  Гауда",
+    "description": "УГЛИЧ",
+    "price": 901.0,
+    "article": 100101,
+    "image": "100101.webp"
+  },
+  {
+    "id": 118,
+    "name": "Масло сливочное  крестьянской весовое 1 кг",
+    "description": "#",
+    "price": 625.0,
+    "article": 100102,
+    "image": "100102.webp"
+  },
+  {
+    "id": 119,
+    "name": "Колбасный продукт копченый Плавыч",
+    "description": "1/ 13.5 кг",
+    "price": 176.5,
+    "article": 100103,
+    "image": "100103.webp"
+  },
+  {
+    "id": 120,
+    "name": "Сок МАЛЫШАМ 200г",
+    "description": "1/18",
+    "price": 29.0,
+    "article": 100104,
+    "image": "100104.webp"
+  },
+  {
+    "id": 121,
+    "name": "Президент сыр плавленый тост 150г",
+    "description": "#",
+    "price": 113.0,
+    "article": 100105,
+    "image": "100105.webp"
+  },
+  {
+    "id": 122,
+    "name": "Сыр Королевская печать",
+    "description": "45%",
+    "price": 731.0,
+    "article": 100106,
+    "image": "100106.webp"
+  },
+  {
+    "id": 123,
+    "name": "Сыр КОСА копченая 100г",
+    "description": "Радужный",
+    "price": 128.0,
+    "article": 100107,
+    "image": "100107.webp"
+  },
+  {
+    "id": 124,
+    "name": "Сыр  СЛИВОЧНЫЙ Киприно",
+    "description": "#",
+    "price": 816.0,
+    "article": 100108,
+    "image": "100108.webp"
+  },
+  {
+    "id": 125,
+    "name": "Сыр плавленый ПЛАВЫЧ 180.00",
+    "description": "в ассортименте",
+    "price": 105.0,
+    "article": 100109,
+    "image": "100109.webp"
+  },
+  {
+    "id": 126,
+    "name": "Сыр Леаус 300г",
+    "description": "#",
+    "price": 975.0,
+    "article": 100110,
+    "image": "100110.webp"
+  },
+  {
+    "id": 127,
+    "name": "Сыр Покровский  300г",
+    "description": "#",
+    "price": 975.0,
+    "article": 100111,
+    "image": "100111.webp"
+  },
+  {
+    "id": 128,
+    "name": "Сыр Чёрный принц",
+    "description": "кг",
+    "price": 927.0,
+    "article": 100112,
+    "image": "100112.webp"
+  },
+  {
+    "id": 129,
+    "name": "Сыр Чуйский творожный 140г",
+    "description": "шт",
+    "price": 118.0,
+    "article": 100113,
+    "image": "100113.webp"
+  },
+  {
+    "id": 130,
+    "name": "Колбасный Брест Литовский  копчёный  300г",
+    "description": "шт",
+    "price": 175.0,
+    "article": 100114,
+    "image": "100114.webp"
+  },
+  {
+    "id": 131,
+    "name": "Масло Минская марка 180г",
+    "description": "Беларусь",
+    "price": 231.0,
+    "article": 100115,
+    "image": "100115.webp"
+  },
+  {
+    "id": 132,
+    "name": "Масло Сохраняя традиции 180г",
+    "description": "Беларусь",
+    "price": 205.0,
+    "article": 100116,
+    "image": "100116.webp"
+  },
+  {
+    "id": 133,
+    "name": "Сливки БМК 10% 500г",
+    "description": "1/12",
+    "price": 125.0,
+    "article": 100117,
+    "image": "100117.webp"
+  },
+  {
+    "id": 134,
+    "name": "Сливки  БМК 20% 500г",
+    "description": "#",
+    "price": 195.0,
+    "article": 100118,
+    "image": "100118.webp"
+  },
+  {
+    "id": 135,
+    "name": "Сливки БМК 33% 500г",
+    "description": "#",
+    "price": 305.0,
+    "article": 100119,
+    "image": "100119.webp"
+  },
+  {
+    "id": 136,
+    "name": "Йогурт Фругурт 1.5% 950г",
+    "description": "#",
+    "price": 143.6,
+    "article": 100120,
+    "image": "100120.webp"
+  },
+  {
+    "id": 137,
+    "name": "Сок Фруто Няня 200г",
+    "description": "1/18",
+    "price": 40.0,
+    "article": 100121,
+    "image": "100121.webp"
+  },
+  {
+    "id": 138,
+    "name": "Хохланд  БРЫНЗА 250г",
+    "description": "#",
+    "price": 227.0,
+    "article": 100122,
+    "image": "100122.webp"
+  },
+  {
+    "id": 139,
+    "name": "Молоко Минская марка 3.2% 1л",
+    "description": "1/12",
+    "price": 109.0,
+    "article": 100123,
+    "image": "100123.webp"
+  },
+  {
+    "id": 140,
+    "name": "Молоко Село Зелёное 3.2% 0.95л",
+    "description": "1/12",
+    "price": 106.0,
+    "article": 100124,
+    "image": "100124.webp"
+  },
+  {
+    "id": 141,
+    "name": "Колбасный сыр МИНЧАНКА",
+    "description": "ГОСТ Беларусь",
+    "price": 562.0,
+    "article": 100125,
+    "image": "100125.webp"
+  },
+  {
+    "id": 142,
+    "name": "Сливки ТРИ КОРОВЫ ДВА КОТА 200г 20%",
+    "description": "#",
+    "price": 93.0,
+    "article": 100126,
+    "image": "100126.webp"
+  },
+  {
+    "id": 143,
+    "name": "Сливки ТРИ КОРОВЫ ДВА КОТА 500г 10%",
+    "description": "#",
+    "price": 158.0,
+    "article": 100127,
+    "image": "100127.webp"
+  },
+  {
+    "id": 144,
+    "name": "Сливки ТРИ КОРОВЫ ДВА КОТА 200г 10%",
+    "description": "#",
+    "price": 66.0,
+    "article": 100128,
+    "image": "100128.webp"
+  },
+  {
+    "id": 145,
+    "name": "Йогурт Эрмигурт питьевой 1.2% 290г",
+    "description": "1/6",
+    "price": 68.0,
+    "article": 100129,
+    "image": "100129.webp"
+  },
+  {
+    "id": 146,
+    "name": "Коктейль Молочный ТРИ КОРОВЫ ДВА КОТА  200г",
+    "description": "#",
+    "price": 41.0,
+    "article": 100130,
+    "image": "100130.webp"
+  },
+  {
+    "id": 147,
+    "name": "Растишка  творог 1*6 3.5%",
+    "description": "#",
+    "price": 112.0,
+    "article": 100131,
+    "image": "100131.webp"
+  },
+  {
+    "id": 148,
+    "name": "Растишка питьевой 90г 1*4",
+    "description": "#",
+    "price": 37.4,
+    "article": 100132,
+    "image": "100132.webp"
+  },
+  {
+    "id": 149,
+    "name": "Растишка коктейль 210г",
+    "description": "#",
+    "price": 65.0,
+    "article": 100133,
+    "image": "100133.webp"
+  },
+  {
+    "id": 150,
+    "name": "Йогурт Эрмигурт 3.2% 100г",
+    "description": "#",
+    "price": 40.0,
+    "article": 100134,
+    "image": "100134.webp"
+  },
+  {
+    "id": 151,
+    "name": "Йогурт Эрмигурт 7.5% 100г",
+    "description": "#",
+    "price": 43.5,
+    "article": 100135,
+    "image": "100135.webp"
+  },
+  {
+    "id": 152,
+    "name": "Йогурт Услада 1.2% 95г",
+    "description": "#",
+    "price": 30.0,
+    "article": 100136,
+    "image": "100136.webp"
+  },
+  {
+    "id": 153,
+    "name": "Йогурт Фруттис 8%",
+    "description": "1/16",
+    "price": 38.8,
+    "article": 100137,
+    "image": "100137.webp"
+  },
+  {
+    "id": 154,
+    "name": "Йогурт Фруттис 5% 115г",
+    "description": "1/24",
+    "price": 36.2,
+    "article": 100138,
+    "image": "100138.webp"
+  },
+  {
+    "id": 155,
+    "name": "Йогурт Нежный  285г питьевой",
+    "description": "1/6",
+    "price": 66.5,
+    "article": 100139,
+    "image": "100139.webp"
+  },
+  {
+    "id": 156,
+    "name": "Йогурт Нежный 1.2% 100г",
+    "description": "1/24",
+    "price": 23.3,
+    "article": 100140,
+    "image": "100140.webp"
+  },
+  {
+    "id": 157,
+    "name": "Пудинг Нежный 100г",
+    "description": "1/24",
+    "price": 33.0,
+    "article": 100141,
+    "image": "100141.webp"
+  },
+  {
+    "id": 158,
+    "name": "Сыр плавленый Хохланд 200г",
+    "description": "шт",
+    "price": 193.0,
+    "article": 100142,
+    "image": "100142.webp"
+  },
+  {
+    "id": 159,
+    "name": "Сыр плавленый хохланд 400г",
+    "description": "шт",
+    "price": 257.0,
+    "article": 100143,
+    "image": "100143.webp"
+  },
+  {
+    "id": 160,
+    "name": "Сыр плавленый хохланд 150г тост",
+    "description": "шт",
+    "price": 146.0,
+    "article": 100144,
+    "image": "100144.webp"
+  },
+  {
+    "id": 161,
+    "name": "Сыр плавленый хохланд 140г круг",
+    "description": "шт",
+    "price": 143.0,
+    "article": 100145,
+    "image": "100145.webp"
+  },
+  {
+    "id": 162,
+    "name": "Сыр плавленый хохланд 50г",
+    "description": "1/6",
+    "price": 39.5,
+    "article": 100146,
+    "image": "100146.webp"
+  },
+  {
+    "id": 163,
+    "name": "Сыр плавленый хохланд 100г",
+    "description": "1/6",
+    "price": 72.5,
+    "article": 100147,
+    "image": "100147.webp"
+  },
+  {
+    "id": 164,
+    "name": "Сыр творожный с зеленью Хохланд 220г",
+    "description": "1/6",
+    "price": 210.0,
+    "article": 100148,
+    "image": "100148.webp"
+  },
+  {
+    "id": 165,
+    "name": "Сыр творожный Сливочный Хохланд 220г",
+    "description": "1/6",
+    "price": 210.0,
+    "article": 100149,
+    "image": "100149.webp"
+  },
+  {
+    "id": 166,
+    "name": "Сыр  творожный Сливочный 140г хохланд",
+    "description": "1/6",
+    "price": 150.0,
+    "article": 100150,
+    "image": "100150.webp"
+  },
+  {
+    "id": 167,
+    "name": "Сыр творожный с зеленью140г хохланд",
+    "description": "1/6",
+    "price": 150.0,
+    "article": 100151,
+    "image": "100151.webp"
+  },
+  {
+    "id": 168,
+    "name": "Сыр творожный 180г для кулинарии Хохланд",
+    "description": "шт",
+    "price": 187.0,
+    "article": 100152,
+    "image": "100152.webp"
+  },
+  {
+    "id": 169,
+    "name": "Сыр творожный 500г для кулинарии рукав Хохланд",
+    "description": "шт",
+    "price": 471.0,
+    "article": 100153,
+    "image": "100153.webp"
+  },
+  {
+    "id": 170,
+    "name": "Сыр творожный для кулинарии 400г Хохланд",
+    "description": "шт",
+    "price": 392.0,
+    "article": 100154,
+    "image": "100154.webp"
+  },
+  {
+    "id": 171,
+    "name": "Йогурт Даннисимо фантазия с шариками в шоколаде",
+    "description": "1/12",
+    "price": 82.0,
+    "article": 100155,
+    "image": "100155.webp"
+  },
+  {
+    "id": 172,
+    "name": "Даннисимо творожный 130г",
+    "description": "1/8",
+    "price": 72.5,
+    "article": 100156,
+    "image": "100156.webp"
+  },
+  {
+    "id": 173,
+    "name": "Творог 5% Простоквашено 200г",
+    "description": "1/6",
+    "price": 117.0,
+    "article": 100157,
+    "image": "100157.webp"
+  },
+  {
+    "id": 174,
+    "name": "Йогурт Для всей Семьи 930г бутылка",
+    "description": "1/6",
+    "price": 136.0,
+    "article": 100158,
+    "image": "100158.webp"
+  },
+  {
+    "id": 175,
+    "name": "Сметана  20% 300г Простоквашено",
+    "description": "1/12",
+    "price": 139.0,
+    "article": 100159,
+    "image": "100159.webp"
+  },
+  {
+    "id": 176,
+    "name": "Йогурт Греческий Простоквашено 135г натуральный",
+    "description": "1/6",
+    "price": 66.0,
+    "article": 100160,
+    "image": "100160.webp"
+  },
+  {
+    "id": 177,
+    "name": "Пюре Акуша я сам  90г дой пак",
+    "description": "1/10",
+    "price": 59.5,
+    "article": 100161,
+    "image": "100161.webp"
+  },
+  {
+    "id": 178,
+    "name": "Сок Агуша 200",
+    "description": "#",
+    "price": 48.0,
+    "article": 100162,
+    "image": "100162.webp"
+  },
+  {
+    "id": 179,
+    "name": "АГУША творог детский100г",
+    "description": "1/6",
+    "price": 42.6,
+    "article": 100163,
+    "image": "100163.webp"
+  },
+  {
+    "id": 180,
+    "name": "Каша молочная жидкая 200г АГУША",
+    "description": "1/10",
+    "price": 57.0,
+    "article": 100164,
+    "image": "100164.webp"
+  },
+  {
+    "id": 181,
+    "name": "Йогурт Альпенленд 290г 1.2% питьевой",
+    "description": "1/6",
+    "price": 76.0,
+    "article": 100165,
+    "image": "100165.webp"
+  },
+  {
+    "id": 182,
+    "name": "Акибио биойогурт питьевой 260г 2%",
+    "description": "1/6",
+    "price": 96.0,
+    "article": 100166,
+    "image": "100166.webp"
+  },
+  {
+    "id": 183,
+    "name": "Био-баланс питьевой 2% 260г",
+    "description": "1/6",
+    "price": 61.0,
+    "article": 100167,
+    "image": "100167.webp"
+  },
+  {
+    "id": 184,
+    "name": "Коктейль Чудо шоколад 1л 2%",
+    "description": "1/6",
+    "price": 185.0,
+    "article": 100168,
+    "image": "100168.webp"
+  },
+  {
+    "id": 185,
+    "name": "Коктейль молочный Чудо  ваниль 1л",
+    "description": "1/6",
+    "price": 157.0,
+    "article": 100169,
+    "image": "100169.webp"
+  },
+  {
+    "id": 186,
+    "name": "Коктейль молочный Чудо Клубника 1л",
+    "description": "1/12",
+    "price": 157.0,
+    "article": 100170,
+    "image": "100170.webp"
+  },
+  {
+    "id": 187,
+    "name": "Коктейль молочный Чудо 200",
+    "description": "1/27",
+    "price": 52.0,
+    "article": 100171,
+    "image": "100171.webp"
+  },
+  {
+    "id": 188,
+    "name": "Чудо творожок 100г",
+    "description": "1/12",
+    "price": 78.5,
+    "article": 100172,
+    "image": "100172.webp"
+  },
+  {
+    "id": 189,
+    "name": "Пюре фрутоНЯНЯ на прогулку 90гр дой пак",
+    "description": "1/12",
+    "price": 51.0,
+    "article": 100173,
+    "image": "100173.webp"
+  },
+  {
+    "id": 190,
+    "name": "Пюре фрутоняня 250г стекло",
+    "description": "#",
+    "price": 91.0,
+    "article": 100174,
+    "image": "100174.webp"
+  },
+  {
+    "id": 191,
+    "name": "Пюре Дары Кубани 90г дой пак",
+    "description": "1/12",
+    "price": 41.0,
+    "article": 100175,
+    "image": "100175.webp"
+  },
+  {
+    "id": 192,
+    "name": "Йогурт Фругурт 240г",
+    "description": "#",
+    "price": 83.0,
+    "article": 100176,
+    "image": "100176.webp"
+  },
+  {
+    "id": 193,
+    "name": "Сливки Милкавита 10% 500г",
+    "description": "#",
+    "price": 137.0,
+    "article": 100177,
+    "image": "100177.webp"
+  },
+  {
+    "id": 194,
+    "name": "Сливки  Милкавита 20% 500г",
+    "description": "#",
+    "price": 187.0,
+    "article": 100178,
+    "image": "100178.webp"
+  },
+  {
+    "id": 195,
+    "name": "Сырный продукт Российский Быстрянка",
+    "description": "с ЗМЖ 1/9кг",
+    "price": 432.0,
+    "article": 100179,
+    "image": "100179.webp"
+  },
+  {
+    "id": 196,
+    "name": "Сыр голландский 300г шар 50%",
+    "description": "#",
+    "price": 965.0,
+    "article": 100180,
+    "image": "100180.webp"
+  },
+  {
+    "id": 197,
+    "name": "Сыр Алиса",
+    "description": "#",
+    "price": 826.0,
+    "article": 100181,
+    "image": "100181.webp"
+  },
+  {
+    "id": 198,
+    "name": "Топлёное смесь растительное жировая 350г",
+    "description": "1/24",
+    "price": 248.5,
+    "article": 100182,
+    "image": "100182.webp"
+  },
+  {
+    "id": 199,
+    "name": "Спред Масленичка 62% 170 г растительно жировой",
+    "description": "1/30",
+    "price": 69.5,
+    "article": 100183,
+    "image": "100183.webp"
+  },
+  {
+    "id": 200,
+    "name": "Спред  Ромашковое поле 170г",
+    "description": "1/50",
+    "price": 69.0,
+    "article": 100184,
+    "image": "100184.webp"
+  },
+  {
+    "id": 201,
+    "name": "Спред  Иркутский 170г растительно жировой",
+    "description": "1/50",
+    "price": 69.9,
+    "article": 100185,
+    "image": "100185.webp"
+  },
+  {
+    "id": 202,
+    "name": "Плавленый продукт  с сыром Дружок 70г",
+    "description": "1/12",
+    "price": 23.7,
+    "article": 100186,
+    "image": "100186.webp"
+  },
+  {
+    "id": 203,
+    "name": "Маргарин Пышка для выпечки 200г",
+    "description": "#",
+    "price": 60.5,
+    "article": 100187,
+    "image": "100187.webp"
+  },
+  {
+    "id": 204,
+    "name": "Дрожжи 1кг  РЕКОРД",
+    "description": "1/10",
+    "price": 135.0,
+    "article": 100188,
+    "image": "100188.webp"
+  },
+  {
+    "id": 205,
+    "name": "Сыр  Покровский  Мамонтово",
+    "description": "1/ 5кг",
+    "price": 880.0,
+    "article": 100189,
+    "image": "100189.webp"
+  },
+  {
+    "id": 206,
+    "name": "Сыр Голландский Столица  молока",
+    "description": "1/5",
+    "price": 432.0,
+    "article": 100190,
+    "image": "100190.webp"
+  },
+  {
+    "id": 207,
+    "name": "Сыр плавленый Хохланд 230г 30% НОВИНКА индейка",
+    "description": "шт",
+    "price": 178.0,
+    "article": 100191,
+    "image": "100191.webp"
+  },
+  {
+    "id": 208,
+    "name": "Сыр плавленый Хохланд 230г 30% НОВИНКА грибы",
+    "description": "шт",
+    "price": 178.0,
+    "article": 100192,
+    "image": "100192.webp"
+  },
+  {
+    "id": 209,
+    "name": "Сыворотка молочная 1л ЯНТА",
+    "description": "шт",
+    "price": 15.0,
+    "article": 100193,
+    "image": "100193.webp"
+  },
+  {
+    "id": 210,
+    "name": "Молоко Простоквашено 3.2%",
+    "description": "1/12",
+    "price": 146.0,
+    "article": 100194,
+    "image": "100194.webp"
+  },
+  {
+    "id": 211,
+    "name": "Масло Сливочное72.5%  200г Масло сыр база( качугское)",
+    "description": "1/20",
+    "price": 238.0,
+    "article": 100195,
+    "image": "100195.webp"
+  },
+  {
+    "id": 212,
+    "name": "Йогурт Пудинг Эрмигурт",
+    "description": "1/24",
+    "price": 31.0,
+    "article": 100196,
+    "image": "100196.webp"
+  },
+  {
+    "id": 213,
+    "name": "Сыр колбасный 40% ИМСБ",
+    "description": "шт",
+    "price": 165.5,
+    "article": 100197,
+    "image": "100197.webp"
+  },
+  {
+    "id": 214,
+    "name": "Йогурт Нежный 5%",
+    "description": "1/24",
+    "price": 40.6,
+    "article": 100198,
+    "image": "100198.webp"
+  },
+  {
+    "id": 215,
+    "name": "Йогурт Фруттис  с хлопьями",
+    "description": "1/12",
+    "price": 111.0,
+    "article": 100199,
+    "image": "100199.webp"
+  },
+  {
+    "id": 216,
+    "name": "Сгущёнка   с какао 0.360г  Байкальская",
+    "description": "1/15",
+    "price": 151.2,
+    "article": 100200,
+    "image": "100200.webp"
+  },
+  {
+    "id": 217,
+    "name": "Сыр Король  Артур 45%",
+    "description": "1/2.5 кг",
+    "price": 609.0,
+    "article": 100201,
+    "image": "100201.webp"
+  },
+  {
+    "id": 218,
+    "name": "Йогурт Альпенленд  2.5% 100г",
+    "description": "1/24",
+    "price": 33.4,
+    "article": 100202,
+    "image": "100202.webp"
+  },
+  {
+    "id": 219,
+    "name": "Йогурт Альпенленд 7.5 100г",
+    "description": "1/24",
+    "price": 35.0,
+    "article": 100203,
+    "image": "100203.webp"
+  },
+  {
+    "id": 220,
+    "name": "Майонез Провансаль 800г дой.пак КРАСНОЯРСК",
+    "description": "1/6",
+    "price": 178.0,
+    "article": 100204,
+    "image": "100204.webp"
+  },
+  {
+    "id": 221,
+    "name": "Майонез Провансаль 400г дой.пак КРАСНОЯРСК",
+    "description": "1/12",
+    "price": 95.0,
+    "article": 100205,
+    "image": "100205.webp"
+  },
+  {
+    "id": 222,
+    "name": "Майонез Провансаль 200г дой.пак КРАСНОЯРСК",
+    "description": "1/18",
+    "price": 53.0,
+    "article": 100206,
+    "image": "100206.webp"
+  },
+  {
+    "id": 223,
+    "name": "Майонез Провансаль 800г ведро КРАСНОЯРСК",
+    "description": "1/6",
+    "price": 185.0,
+    "article": 100207,
+    "image": "100207.webp"
+  },
+  {
+    "id": 224,
+    "name": "Масло сливочное ФИРМЕННОЕ  80% 200г ИМСБ",
+    "description": "1/20",
+    "price": 274.0,
+    "article": 100208,
+    "image": "100208.webp"
+  },
+  {
+    "id": 225,
+    "name": "Фетакса 200 Хохланд",
+    "description": "шт",
+    "price": 190.1,
+    "article": 100209,
+    "image": "100209.webp"
+  },
+  {
+    "id": 226,
+    "name": "Сыр плавленый 170г РОГОЧЕВ",
+    "description": "шт",
+    "price": 110.0,
+    "article": 100210,
+    "image": "100210.webp"
+  },
+  {
+    "id": 227,
+    "name": "Сыр плавленый 180г ОЧАКОВСКИЙ Алтайский",
+    "description": "шт",
+    "price": 80.0,
+    "article": 100211,
+    "image": "100211.webp"
+  },
+  {
+    "id": 228,
+    "name": "Сыр плавленый 175г ЧУЙСКИЙ",
+    "description": "шт",
+    "price": 125.0,
+    "article": 100212,
+    "image": "100212.webp"
+  },
+  {
+    "id": 229,
+    "name": "Сыр ЗИМАРЕВСКИЙ",
+    "description": "кг",
+    "price": 615.0,
+    "article": 100213,
+    "image": "100213.webp"
+  },
+  {
+    "id": 230,
+    "name": "Сыр  Мраморный",
+    "description": "кг",
+    "price": 750.0,
+    "article": 100214,
+    "image": "100214.webp"
+  },
+  {
+    "id": 231,
+    "name": "Сыр КОРОЛЕЙ с топлёное молоком",
+    "description": "кг",
+    "price": 721.0,
+    "article": 100215,
+    "image": "100215.webp"
+  },
+  {
+    "id": 232,
+    "name": "Молоко ЕДАКОВ 3.2% 1л",
+    "description": "1/12",
+    "price": 105.0,
+    "article": 100216,
+    "image": "100216.webp"
+  },
+  {
+    "id": 233,
+    "name": "Молоко БОЛЬШАЯ КРУЖКА 3.2% 1.98л",
+    "description": "1/6",
+    "price": 203.0,
+    "article": 100217,
+    "image": "100217.webp"
+  },
+  {
+    "id": 234,
+    "name": "Сливки Домик в деревне 20% 200г",
+    "description": "#",
+    "price": 133.0,
+    "article": 100218,
+    "image": "100218.webp"
+  },
+  {
+    "id": 235,
+    "name": "Сливки ТРИ КОРОВЫ ДВА КОТА 20% 500г",
+    "description": "шт",
+    "price": 237.0,
+    "article": 100219,
+    "image": "100219.webp"
+  },
+  {
+    "id": 236,
+    "name": "Тан 1л классический бутылка",
+    "description": "1/6",
+    "price": 97.5,
+    "article": 100220,
+    "image": "100220.webp"
+  },
+  {
+    "id": 237,
+    "name": "Тан 0.5л классический бутылка",
+    "description": "1/12",
+    "price": 57.0,
+    "article": 100221,
+    "image": "100221.webp"
+  },
+  {
+    "id": 238,
+    "name": "Сырок глазированный ПОНГО 40г",
+    "description": "1/20",
+    "price": 23.0,
+    "article": 100222,
+    "image": "100222.webp"
+  },
+  {
+    "id": 239,
+    "name": "Сырок глазированный творожный 40г МИНСКАЯ МАРКА",
+    "description": "1/20",
+    "price": 34.5,
+    "article": 100223,
+    "image": "100223.webp"
+  },
+  {
+    "id": 240,
+    "name": "Паста из морепродуктов Le Mare сливочная",
+    "description": "шт",
+    "price": 120.0,
+    "article": 100224,
+    "image": "100224.webp"
+  },
+  {
+    "id": 241,
+    "name": "Молоко ШАДРИНСКОЕ 500г",
+    "description": "1/12",
+    "price": 107.0,
+    "article": 100225,
+    "image": "100225.webp"
+  },
+  {
+    "id": 242,
+    "name": "Топлёное масло БЕЛОРУССКОЕ 500г",
+    "description": "1/6",
+    "price": 280.0,
+    "article": 100226,
+    "image": "100226.webp"
+  },
+  {
+    "id": 243,
+    "name": "Икра здоровье со сливочным кремом 200г",
+    "description": "1/12",
+    "price": 67.3,
+    "article": 100227,
+    "image": "100227.webp"
+  },
+  {
+    "id": 244,
+    "name": "СЫР ПЛАВЛЕНЫЙ ПРОДУКТ с сыром и ветчиной 170 60%",
+    "description": "1/20",
+    "price": 68.5,
+    "article": 100228,
+    "image": "100228.webp"
+  },
+  {
+    "id": 245,
+    "name": "СЫР ПЛАВЛЕНЫЙ ПРОДУКТ с сыром сливочный 170 60%",
+    "description": "1/20",
+    "price": 68.5,
+    "article": 100229,
+    "image": "100229.webp"
+  },
+  {
+    "id": 246,
+    "name": "Икра 500гр",
+    "description": "1/12",
+    "price": 162.0,
+    "article": 100230,
+    "image": "100230.webp"
+  },
+  {
+    "id": 247,
+    "name": "Сливки Милкавита 500гр 33%",
+    "description": "шт",
+    "price": 253.0,
+    "article": 100231,
+    "image": "100231.webp"
+  },
+  {
+    "id": 248,
+    "name": "Творог  Любимая чашка 5% 300г",
+    "description": "шт",
+    "price": 148.0,
+    "article": 100232,
+    "image": "100232.webp"
+  },
+  {
+    "id": 249,
+    "name": "Сыр Белорусский классический цилиндр 1кг",
+    "description": "кг",
+    "price": 731.5,
+    "article": 100233,
+    "image": "100233.webp"
+  },
+  {
+    "id": 250,
+    "name": "Спред Алтайский 200г",
+    "description": "шт",
+    "price": 65.0,
+    "article": 100234,
+    "image": "100234.webp"
+  },
+  {
+    "id": 251,
+    "name": "Спред  Крестьянское подворье 200г",
+    "description": "шт",
+    "price": 65.0,
+    "article": 100235,
+    "image": "100235.webp"
+  },
+  {
+    "id": 252,
+    "name": "Сырок глазированный 40г с арахисовой пастой",
+    "description": "шт",
+    "price": 32.5,
+    "article": 100236,
+    "image": "100236.webp"
+  },
+  {
+    "id": 253,
+    "name": "Сыр Сметанковый (Заринск) 50%",
+    "description": "кг",
+    "price": 827.0,
+    "article": 100237,
+    "image": "100237.webp"
+  },
+  {
+    "id": 254,
+    "name": "Сгущеное  молоко Егорка варёное  с сахаром РОГАЧЕВ Беларусь 380г",
+    "description": "шт",
+    "price": 128.0,
+    "article": 100238,
+    "image": "100238.webp"
+  },
+  {
+    "id": 255,
+    "name": "Сгущёное молоко 380г  РОГАЧЕВ БЕЛАРУСЬ ГОСТ",
+    "description": "ШТ",
+    "price": 126.5,
+    "article": 100239,
+    "image": "100239.webp"
+  },
+  {
+    "id": 256,
+    "name": "Майонез Провансаль 500г ст.банка ЯНТА",
+    "description": "1/12",
+    "price": 132.8,
+    "article": 100240,
+    "image": "100240.webp"
+  },
+  {
+    "id": 257,
+    "name": "Маргарин монолит 20 кг столово молочный",
+    "description": "1кг",
+    "price": 170.0,
+    "article": 100241
+  }
 ]

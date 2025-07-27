@@ -1,209 +1,563 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сканер кодов маркировки</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-            background: #f5f5f5;
-            max-width: 100%;
-            overflow-x: hidden;
-        }
-        .container {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin: 0 auto;
-            max-width: 400px;
-        }
-        button {
-            background: #0088cc;
-            color: white;
-            border: none;
-            padding: 14px 28px;
-            border-radius: 10px;
-            font-size: 16px;
-            cursor: pointer;
-            margin: 15px 0;
-            width: 100%;
-            font-weight: bold;
-            transition: background 0.2s;
-        }
-        button:hover {
-            background: #0077bb;
-        }
-        button:disabled {
-            background: #cccccc;
-            cursor: not-allowed;
-        }
-        #result {
-            margin: 20px auto;
-            padding: 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            max-width: 100%;
-            min-height: 60px;
-            word-break: break-all;
-            background: #f9f9f9;
-            font-family: monospace;
-            text-align: left;
-        }
-        .status {
-            color: #666;
-            margin: 10px 0;
-            font-size: 14px;
-        }
-        .instructions {
-            background: #fff8e1;
-            padding: 12px;
-            border-radius: 8px;
-            margin: 15px 0;
-            font-size: 14px;
-            text-align: left;
-        }
-        .valid {
-            border-color: #4caf50 !important;
-            background: #e8f5e9 !important;
-        }
-        .invalid {
-            border-color: #f44336 !important;
-            background: #ffebee !important;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MilkShop - Молочные продукты от лучших производителей</title>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    
+    :root {
+      --primary: #3b82f6;
+      --secondary: #10b981;
+      --accent: #8b5cf6;
+      --dark: #1e293b;
+      --light: #f8fafc;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+    
+    .hero-gradient {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+    }
+    
+    .glass {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .product-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-origin: center;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    .product-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+    
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .fade-in.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    .gradient-text {
+      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .zoom-image {
+      transition: transform 0.3s ease;
+      background: #f8fafc;
+      object-fit: contain;
+    }
+    
+    .zoom-image:hover {
+      transform: scale(1.05);
+    }
+    
+    .show-more-btn {
+      background: linear-gradient(135deg, #3b82f6, #10b981);
+      transition: all 0.3s ease;
+    }
+    
+    .show-more-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+    }
+    
+    .line-clamp-3 {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 1rem;
+    }
+    
+    @media (min-width: 640px) {
+      .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
+    }
+    
+    @media (min-width: 768px) {
+      .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      }
+    }
+    
+    .scan-line {
+      position: absolute;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+      animation: scan 2s linear infinite;
+    }
+    
+    @keyframes scan {
+      0% { top: 0; }
+      100% { top: 100%; }
+    }
+  </style>
 </head>
-<body>
-    <div class="container">
-        <h1>Сканер маркировки</h1>
-        <div class="instructions">
-            <strong>Как сканировать:</strong><br>
-            1. Наведите камеру на код маркировки<br>
-            2. Держите устройство устойчиво<br>
-            3. Убедитесь, что код хорошо освещен
+<body x-data="app()" x-init="init()">
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass backdrop-blur-md">
+    <div class="container mx-auto px-4 py-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-green-500 rounded-full flex items-center justify-center">
+            <i class="fas fa-glass-whiskey text-white text-xl"></i>
+          </div>
+          <h1 class="text-2xl font-bold gradient-text">MilkShop</h1>
         </div>
         
-        <button onclick="scanQR()" id="scanBtn">Сканировать код</button>
-        <div class="status" id="status">Готов к сканированию</div>
+        <nav class="hidden md:flex items-center space-x-8">
+          <a href="#home" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Главная</a>
+          <a href="#products" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Продукты</a>
+          <a href="#about" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">О нас</a>
+        </nav>
         
-        <div id="result">Здесь появится отсканированный код</div>
+        <a href="https://t.me/Privoz58_bott" target="_blank" 
+           class="bg-gradient-to-r from-blue-500 to-green-500 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center space-x-2">
+          <i class="fab fa-telegram"></i>
+          <span>Заказать</span>
+        </a>
+      </div>
     </div>
+  </header>
 
-    <script>
-        // Инициализация Telegram WebApp
-        Telegram.WebApp.ready();
-        Telegram.WebApp.expand();
+  <!-- Hero Section -->
+  <section id="home" class="hero-gradient min-h-screen flex items-center pt-20">
+    <div class="container mx-auto px-4 py-20">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-8 fade-in">
+          <h1 class="text-5xl lg:text-7xl font-black leading-tight">
+            Свежие <span class="gradient-text">молочные</span> продукты<br>
+            <span class="text-4xl lg:text-6xl">от лучших производителей</span>
+          </h1>
+          <p class="text-xl text-gray-600 max-w-2xl">
+            Более 300 наименований молочной продукции от ведущих брендов региона. 
+            Весь ассортимент доступен в нашем Telegram-боте для удобного заказа.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#products" 
+               class="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-center">
+              Смотреть ассортимент
+            </a>
+            <a href="https://t.me/Privoz58_bot" target="_blank"
+               class="bg-white text-blue-600 px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl border-2 border-blue-500 transform hover:scale-105 transition-all duration-300 text-center flex items-center justify-center space-x-2">
+              <i class="fab fa-telegram"></i>
+              <span>Заказать в Telegram</span>
+            </a>
+          </div>
+        </div>
         
-        const scanBtn = document.getElementById('scanBtn');
-        const resultDiv = document.getElementById('result');
-        const statusDiv = document.getElementById('status');
+        <div class="relative flex justify-center">
+          <div class="relative">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-green-400 rounded-3xl blur-3xl opacity-30 animate-pulse"></div>
+            <div class="relative bg-white rounded-3xl p-8 shadow-2xl">
+              <div class="text-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">Закажите в Telegram</h3>
+                <p class="text-gray-600">Отсканируйте QR-код или нажмите кнопку</p>
+              </div>
+              
+              <div class="relative w-64 h-64 mx-auto mb-6">
+                <div class="absolute inset-0 bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl p-2">
+                  <div class="w-full h-full bg-white rounded-xl flex items-center justify-center relative overflow-hidden">
+                    <img src="images/qr.png" alt="QR код для Telegram бота" class="w-48 h-48 object-contain">
+                    <div class="scan-line"></div>
+                  </div>
+                </div>
+              </div>
+              
+              <a href="https://t.me/Privoz58_bot" target="_blank"
+                 class="block w-full bg-gradient-to-r from-blue-500 to-green-500 text-white py-4 rounded-2xl font-bold text-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-center">
+                <i class="fab fa-telegram mr-2"></i>
+                Открыть бота
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+        <div class="fade-in">
+          <div class="text-4xl font-bold gradient-text">300+</div>
+          <div class="text-gray-600 mt-2">Наименований</div>
+        </div>
+        <div class="fade-in">
+          <div class="text-4xl font-bold gradient-text">25+</div>
+          <div class="text-gray-600 mt-2">Производителей</div>
+        </div>
+        <div class="fade-in">
+          <div class="text-4xl font-bold gradient-text">100%</div>
+          <div class="text-gray-600 mt-2">Свежесть</div>
+        </div>
+        <div class="fade-in">
+          <div class="text-4xl font-bold gradient-text">24/7</div>
+          <div class="text-gray-600 mt-2">Поддержка</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16 fade-in">
+        <h2 class="text-4xl font-bold mb-4">Наш ассортимент</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Более 300 наименований молочной продукции от лучших производителей региона
+        </p>
+      </div>
+
+      <!-- Products Grid - Limited view -->
+      <div x-show="!showAll && !loading" class="mb-12">
+        <div class="products-grid">
+          <template x-for="(product, index) in limitedProducts" :key="product.id">
+            <div class="product-card">
+              <div class="aspect-square bg-gray-50 flex items-center justify-center p-2">
+                <img :src="'images/' + product.image" 
+                     :alt="product.name"
+                     class="w-full h-full object-contain zoom-image"
+                     @error="handleImageError($event)">
+              </div>
+              <div class="p-3">
+                <h3 class="font-medium text-gray-800 text-xs leading-tight line-clamp-3" 
+                    x-text="product.name"></h3>
+              </div>
+            </div>
+          </template>
+        </div>
         
-        // Проверка формата кода маркировки (базовый пример)
-        function isValidMarkingCode(code) {
-            // Базовые проверки для кодов "Честного знака":
-            // 1. Длина обычно 13 или более символов
-            // 2. Содержит цифры и буквы в верхнем регистре
-            // 3. Может начинаться с "01" или "21" для GS1
-            return code && code.length >= 13 && /^[A-Z0-9]+$/.test(code);
-        }
+        <div class="text-center mt-12">
+          <button @click="showAll = true" 
+                  class="show-more-btn text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transition-all duration-300">
+            Показать весь ассортимент (<span x-text="products.length"></span> товаров)
+            <i class="fas fa-arrow-down ml-2"></i>
+          </button>
+        </div>
+      </div>
 
-        function scanQR() {
-            scanBtn.disabled = true;
-            statusDiv.textContent = "Сканирование...";
-            resultDiv.className = '';
-            
-            // Пытаемся использовать самый новый метод
-            if (Telegram.WebApp.openQRScanner) {
-                Telegram.WebApp.openQRScanner()
-                    .then(data => {
-                        processScannedData(data);
-                    })
-                    .catch(err => {
-                        handleError(err);
-                    })
-                    .finally(() => {
-                        scanBtn.disabled = false;
-                    });
-            } 
-            // Если нет нового метода, пробуем старый
-            else if (Telegram.WebApp.showScanQrPopup) {
-                Telegram.WebApp.showScanQrPopup({ 
-                    text: "Наведите на код маркировки" 
-                });
-                
-                Telegram.WebApp.onEvent('qrTextReceived', (data) => {
-                    processScannedData(data);
-                    scanBtn.disabled = false;
-                });
-            } 
-            // Если ничего нет - показываем ошибку
-            else {
-                handleError("SCANNER_UNAVAILABLE");
-                scanBtn.disabled = false;
-            }
-        }
+      <!-- Products Grid - Full view -->
+      <div x-show="showAll && !loading" class="fade-in">
+        <div class="products-grid">
+          <template x-for="product in products" :key="product.id">
+            <div class="product-card">
+              <div class="aspect-square bg-gray-50 flex items-center justify-center p-2">
+                <img :src="'images/' + product.image" 
+                     :alt="product.name"
+                     class="w-full h-full object-contain zoom-image"
+                     @error="handleImageError($event)">
+              </div>
+              <div class="p-3">
+                <h3 class="font-medium text-gray-800 text-xs leading-tight line-clamp-3" 
+                    x-text="product.name"></h3>
+              </div>
+            </div>
+          </template>
+        </div>
+        
+        <div class="text-center mt-12">
+          <button @click="showAll = false" 
+                  class="bg-gray-200 text-gray-700 px-8 py-3 rounded-full font-bold hover:bg-gray-300 transition-all duration-300">
+            Свернуть ассортимент
+            <i class="fas fa-arrow-up ml-2"></i>
+          </button>
+        </div>
+      </div>
 
-        function processScannedData(data) {
-            if (!data) {
-                handleError("EMPTY_DATA");
-                return;
-            }
-            
-            // Убираем возможные пробелы и лишние символы
-            const cleanData = data.trim().toUpperCase();
-            
-            // Проверяем, похож ли код на маркировочный
-            if (isValidMarkingCode(cleanData)) {
-                resultDiv.textContent = cleanData;
-                resultDiv.classList.add('valid');
-                statusDiv.textContent = "Код распознан успешно!";
-                
-                // Можно сразу отправить данные в бота
-                try {
-                    Telegram.WebApp.sendData(JSON.stringify({
-                        type: "marking_code",
-                        code: cleanData
-                    }));
-                } catch (e) {
-                    console.log("Не удалось отправить данные боту", e);
-                }
-            } else {
-                resultDiv.textContent = cleanData;
-                resultDiv.classList.add('invalid');
-                statusDiv.textContent = "Это не похоже на код маркировки";
-                Telegram.WebApp.showAlert("Распознан не маркировочный код. Попробуйте еще раз.");
-            }
-        }
+      <!-- Loading -->
+      <div x-show="loading" class="text-center py-12">
+        <div class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+        <p class="mt-4 text-gray-600">Загрузка ассортимента...</p>
+      </div>
+    </div>
+  </section>
 
-        function handleError(err) {
-            let message = "Ошибка: ";
+  <!-- About Section -->
+  <section id="about" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="fade-in">
+          <h2 class="text-4xl font-bold mb-6">Почему выбирают <span class="gradient-text">MilkShop</span>?</h2>
+          <div class="space-y-6">
+            <div class="flex items-start space-x-4">
+              <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-leaf text-blue-600"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Свежесть гарантируем</h3>
+                <p class="text-gray-600">Все продукты поступают напрямую от производителей, обеспечивая максимальную свежесть</p>
+              </div>
+            </div>
             
-            switch(err) {
-                case 'USER_DENIED':
-                    message = "Сканирование отменено";
-                    break;
-                case 'CAMERA_UNAVAILABLE':
-                    message = "Камера недоступна. Проверьте разрешения";
-                    break;
-                case 'EMPTY_DATA':
-                    message = "Не удалось распознать код";
-                    break;
-                case 'SCANNER_UNAVAILABLE':
-                    message = "Сканер недоступен. Откройте в Telegram!";
-                    break;
-                default:
-                    message += err;
-            }
+            <div class="flex items-start space-x-4">
+              <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-shield-alt text-green-600"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Качество под контролем</h3>
+                <p class="text-gray-600">Строгий контроль качества на всех этапах поставки продукции</p>
+              </div>
+            </div>
             
-            statusDiv.textContent = message;
-            resultDiv.textContent = message;
-            resultDiv.classList.add('invalid');
-            Telegram.WebApp.showAlert(message);
+            <div class="flex items-start space-x-4">
+              <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-robot text-purple-600"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Удобный заказ</h3>
+                <p class="text-gray-600">Весь ассортимент доступен в Telegram-боте с удобным интерфейсом</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="relative fade-in">
+          <div class="bg-gradient-to-r from-blue-500 to-green-500 rounded-3xl p-8 text-white">
+            <h3 class="text-2xl font-bold mb-4">Как сделать заказ?</h3>
+            <div class="space-y-4">
+              <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                  <span class="font-bold">1</span>
+                </div>
+                <span>Откройте наш Telegram-бот</span>
+              </div>
+              <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                  <span class="font-bold">2</span>
+                </div>
+                <span>Выберите нужные продукты</span>
+              </div>
+              <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                  <span class="font-bold">3</span>
+                </div>
+                <span>Оформите заказ одним кликом</span>
+              </div>
+              <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                  <span class="font-bold">4</span>
+                </div>
+                <span>Заберите в удобное время</span>
+              </div>
+            </div>
+            <a href="https://t.me/Privoz58_bot" target="_blank"
+               class="mt-6 bg-white text-blue-600 px-6 py-3 rounded-full font-bold inline-flex items-center space-x-2 hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+              <i class="fab fa-telegram"></i>
+              <span>Открыть бота</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 hero-gradient">
+    <div class="container mx-auto px-4 text-center">
+      <div class="max-w-3xl mx-auto fade-in">
+        <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+          Готовы попробовать наши <span class="gradient-text">молочные продукты</span>?
+        </h2>
+        <p class="text-xl text-gray-600 mb-8">
+          Весь ассортимент доступен в Telegram-боте. Удобный интерфейс, быстрое оформление заказа и свежие продукты!
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://t.me/Privoz58_bot" target="_blank"
+             class="bg-gradient-to-r from-blue-500 to-green-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center space-x-2 pulse">
+            <i class="fab fa-telegram"></i>
+            <span>Заказать в Telegram</span>
+          </a>
+          <a href="#products" 
+             class="bg-white text-blue-600 px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl border-2 border-blue-500 transform hover:scale-105 transition-all duration-300">
+            Посмотреть ассортимент
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-16">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center space-x-3 mb-4">
+            <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-green-500 rounded-full flex items-center justify-center">
+              <i class="fas fa-glass-whiskey text-white"></i>
+            </div>
+            <h3 class="text-2xl font-bold">MilkShop</h3>
+          </div>
+          <p class="text-gray-400 mb-4">
+            Ваш надежный дистрибьютор молочной продукции от лучших производителей региона.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fab fa-telegram text-2xl"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fab fa-vk text-2xl"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fab fa-instagram text-2xl"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="text-lg font-bold mb-4">Навигация</h4>
+          <ul class="space-y-2">
+            <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">Главная</a></li>
+            <li><a href="#products" class="text-gray-400 hover:text-white transition-colors">Продукты</a></li>
+            <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">О нас</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-lg font-bold mb-4">Контакты</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li class="flex items-center space-x-2">
+              <i class="fas fa-phone"></i>
+              <span>+7 (3452) 123-456</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <i class="fas fa-envelope"></i>
+              <span>info@milkshop.ru</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>г. Тюмень, ул. Молочная, 15</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-lg font-bold mb-4">Режим работы</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li>Пн-Пт: 9:00 - 18:00</li>
+            <li>Сб: 10:00 - 16:00</li>
+            <li>Вс: выходной</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+        <p>&copy; 2025 MilkShop. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function app() {
+      return {
+        showAll: false,
+        loading: true,
+        products: [],
+        displayedProducts: [],
+        
+        init() {
+          // Загружаем данные из products.json
+          fetch('products.json')
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.json();
+            })
+            .then(data => {
+              this.products = data;
+              this.displayedProducts = this.products.slice(0, 16);
+              this.loading = false;
+              this.animateElements();
+            })
+            .catch(error => {
+              console.error('Ошибка загрузки products.json:', error);
+              this.loading = false;
+            });
+        },
+        
+        get limitedProducts() {
+          return this.products.slice(0, 16);
+        },
+        
+        handleImageError(event) {
+          event.target.src = 'image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9IiNlNWU3ZWIiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSIyMCIgZmlsbD0iI2M1YzZjYi8+PHBhdGggZD0iTTQwIDU1TDYwIDU1TDUwIDcwWiIgZmlsbD0iI2E1YTVhNSIvPjwvc3ZnPg==';
+        },
+        
+        animateElements() {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+              }
+            });
+          }, { threshold: 0.1 });
+          
+          document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
         }
-    </script>
+      }
+    }
+    
+    // Прокрутка к верху при загрузке страницы
+    document.addEventListener('DOMContentLoaded', function() {
+      window.scrollTo(0, 0);
+    });
+  </script>
 </body>
 </html>
