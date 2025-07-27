@@ -1,79 +1,62 @@
 <!DOCTYPE html>
-<html lang="en" x-data="qrScanner">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Telegram QR Scanner</title>
-    <!-- Tailwind CSS (используем CDN для минимального сетапа) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Alpine.js -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        button {
+            background: #0088cc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+        }
+    </style>
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
-    <div class="bg-white rounded-lg shadow-md p-6 w-full max-w-md" x-data="qrScanner">
-        <h1 class="text-xl font-bold mb-4 text-center">Telegram QR Scanner</h1>
-        
-        <!-- Поле для вывода результата -->
-        <div class="mb-4">
-            <label class="block text-gray-700 mb-2">Результат:</label>
-            <input 
-                x-model="result" 
-                type="text" 
-                readonly 
-                class="w-full p-2 border rounded bg-gray-50"
-                placeholder="Здесь будет QR-код">
-        </div>
-
-        <!-- Кнопка сканирования -->
-        <button 
-            @click="scanQR()" 
-            class="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded transition"
-            x-text="isLoading ? 'Сканируем...' : 'Сканировать QR-код'"
-            :disabled="isLoading">
-        </button>
-
-        <!-- Вывод ошибки -->
-        <p x-show="error" class="mt-3 text-red-500" x-text="error"></p>
-    </div>
+<body>
+    <h1>Сканер QR-кода</h1>
+    <button onclick="scanQR()">Сканировать</button>
+    <div id="result">Здесь будет результат...</div>
 
     <script>
-        document.addEventListener('alpine:init', () => {
-            Alpine.data('qrScanner', () => ({
-                result: '',
-                error: '',
-                isLoading: false,
+        function scanQR() {
+            // Проверяем, что мы в Telegram WebApp
+            if (!window.Telegram?.WebApp?.openQRScanner) {
+                alert("Откройте в Telegram через меню бота!");
+                return;
+            }
 
-                scanQR() {
-                    this.isLoading = true;
-                    this.error = '';
+            // Запускаем сканер
+            Telegram.WebApp.openQRScanner()
+                .then(data => {
+                    document.getElementById("result").innerText = data;
+                })
+                .catch(err => {
+                    let errorMessage = "Ошибка: ";
+                    if (err === "USER_DENIED") errorMessage = "Вы отменили сканирование ❌";
+                    else if (err === "CAMERA_UNAVAILABLE") errorMessage = "Камера недоступна 📵";
+                    document.getElementById("result").innerText = errorMessage;
+                });
+        }
 
-                    // Проверяем, доступен ли Telegram WebApp API
-                    if (!window.Telegram?.WebApp?.openQRScanner) {
-                        this.error = "Сканер QR-кода доступен только в Telegram!";
-                        this.isLoading = false;
-                        return;
-                    }
-
-                    // Вызываем сканер
-                    Telegram.WebApp.openQRScanner()
-                        .then((data) => {
-                            this.result = data;
-                        })
-                        .catch((err) => {
-                            this.error = this.getErrorMessage(err);
-                        })
-                        .finally(() => {
-                            this.isLoading = false;
-                        });
-                },
-
-                getErrorMessage(err) {
-                    if (err === 'USER_DENIED') return "Пользователь отменил сканирование";
-                    if (err === 'CAMERA_UNAVAILABLE') return "Камера недоступна";
-                    return "Ошибка сканирования: " + err;
-                }
-            }));
-        });
+        // Развернуть MiniApp на весь экран (как в Wallet)
+        Telegram.WebApp.expand();
     </script>
 </body>
 </html>
