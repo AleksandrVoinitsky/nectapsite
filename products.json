@@ -1,0 +1,154 @@
+[
+    {
+        "id": 1,
+        "name": "Смартфон X Смартфон X Смартфон X Смартфон X Смартфон X",
+        "description": "Флагманский смартфон с OLED-экраном Флагманский смартфон с OLED-экраном Флагманский смартфон с OLED-экраном Флагманский смартфон с OLED-экраном Флагманский смартфон с OLED-экраном",
+        "price": 79999.9,
+        "image": "",
+        "category": "electronics"
+    },
+    {
+        "id": 2,
+        "name": "Ноутбук Pro",
+        "description": "16 ГБ RAM, SSD 1ТБ, процессор i7",
+        "price": 99999.0,
+        "image": "100000.webp",
+        "category": "electronics"
+    },
+    {
+        "id": 3,
+        "name": "Наушники Elite",
+        "description": "Беспроводные с шумоподавлением",
+        "price": 14999.5,
+        "image": "100001.webp",
+        "category": "electronics"
+    },
+    {
+        "id": 4,
+        "name": "Планшет Max",
+        "description": "12.9 дюймов, стилус в комплекте",
+        "price": 65999.0,
+        "image": "100002.webp",
+        "category": "electronics"
+    },
+    {
+        "id": 5,
+        "name": "Умные часы",
+        "description": "Мониторинг здоровья, водонепроницаемость",
+        "price": 12999.9,
+        "image": "100003.webp",
+        "category": "electronics"
+    },
+    {
+        "id": 6,
+        "name": "Футболка Classic",
+        "description": "100% хлопок, белая",
+        "price": 1999.0,
+        "image": "100004.webp",
+        "category": "clothing"
+    },
+    {
+        "id": 7,
+        "name": "Джинсы Slim",
+        "description": "Облегающие, синие",
+        "price": 4999.5,
+        "image": "100005.webp",
+        "category": "clothing"
+    },
+    {
+        "id": 8,
+        "name": "Куртка Winter",
+        "description": "Утепленная, с капюшоном",
+        "price": 8999.9,
+        "image": "100006.webp",
+        "category": "clothing"
+    },
+    {
+        "id": 9,
+        "name": "Рубашка Office",
+        "description": "Классическая, голубая",
+        "price": 3499.0,
+        "image": "100007.webp",
+        "category": "clothing"
+    },
+    {
+        "id": 10,
+        "name": "Кроссовки Sport",
+        "description": "Для бега, амортизация",
+        "price": 5999.5,
+        "image": "100008.webp",
+        "category": "clothing"
+    },
+    {
+        "id": 11,
+        "name": "Программирование на Python",
+        "description": "Полное руководство",
+        "price": 1599.0,
+        "image": "100009.webp",
+        "category": "books"
+    },
+    {
+        "id": 12,
+        "name": "Война и мир",
+        "description": "Л.Н. Толстой, 4 тома",
+        "price": 899.9,
+        "image": "1000010.webp",
+        "category": "books"
+    },
+    {
+        "id": 13,
+        "name": "JavaScript для профессионалов",
+        "description": "Современные практики",
+        "price": 2199.5,
+        "image": "1000011.webp",
+        "category": "books"
+    },
+    {
+        "id": 14,
+        "name": "Гарри Поттер и Дары Смерти",
+        "description": "Заключительная книга серии",
+        "price": 999.0,
+        "image": "100.webp",
+        "category": "books"
+    },
+    {
+        "id": 15,
+        "name": "Искусство алгоритмов",
+        "description": "Основы компьютерных наук",
+        "price": 2799.9,
+        "image": "200.webp",
+        "category": "books"
+    },
+    {
+        "id": 16,
+        "name": "Фотоаппарат Pro",
+        "description": "Зеркальный, 24 Мп",
+        "price": 45999.0,
+        "image": "300.webp",
+        "category": "electronics"
+    },
+    {
+        "id": 17,
+        "name": "Шорты Summer",
+        "description": "Дышащие, черные",
+        "price": 2499.5,
+        "image": "100000.webp",
+        "category": "clothing"
+    },
+    {
+        "id": 18,
+        "name": "React в действии",
+        "description": "Разработка современных приложений",
+        "price": 1899.9,
+        "image": "100001.webp",
+        "category": "books"
+    },
+    {
+        "id": 19,
+        "name": "Монитор Ultra",
+        "description": "4K, 32 дюйма",
+        "price": 34999.0,
+        "image": "100002.webp",
+        "category": "electronics"
+    }
+]

@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "name": "Электроника",
+        "key": "electronics",
+        "image": "100.webp"
+    },
+    {
+        "id": 2,
+        "name": "Одежда",
+        "key": "clothing",
+        "image": "100.webp"
+    },
+    {
+        "id": 3,
+        "name": "Книги",
+        "key": "books",
+        "image": "100.webp"
+    }
+]
