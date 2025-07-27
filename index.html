@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,25 +7,28 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: Arial, sans-serif;
             text-align: center;
             padding: 20px;
+            background: #f5f5f5;
         }
         button {
             background: #0088cc;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border-radius: 10px;
             font-size: 16px;
             cursor: pointer;
+            margin: 10px;
         }
         #result {
-            margin-top: 20px;
-            padding: 10px;
+            margin: 20px auto;
+            padding: 15px;
             border: 1px solid #ddd;
-            border-radius: 5px;
-            width: 100%;
+            border-radius: 10px;
+            max-width: 300px;
+            word-break: break-all;
         }
     </style>
 </head>
@@ -35,28 +38,50 @@
     <div id="result">Здесь будет результат...</div>
 
     <script>
+        // Инициализация Telegram WebApp
+        Telegram.WebApp.ready();
+        Telegram.WebApp.expand();  // На весь экран
+
         function scanQR() {
-            // Проверяем, что мы в Telegram WebApp
-            if (!window.Telegram?.WebApp?.openQRScanner) {
-                alert("Откройте в Telegram через меню бота!");
+            // Проверяем доступные методы сканера
+            const scannerMethod = Telegram.WebApp.openQRScanner || Telegram.WebApp.showScanQrPopup;
+
+            if (!scannerMethod) {
+                Telegram.WebApp.showAlert("Ошибка: Сканер недоступен. Откройте в Telegram!");
                 return;
             }
 
-            // Запускаем сканер
-            Telegram.WebApp.openQRScanner()
-                .then(data => {
-                    document.getElementById("result").innerText = data;
-                })
-                .catch(err => {
-                    let errorMessage = "Ошибка: ";
-                    if (err === "USER_DENIED") errorMessage = "Вы отменили сканирование ❌";
-                    else if (err === "CAMERA_UNAVAILABLE") errorMessage = "Камера недоступна 📵";
-                    document.getElementById("result").innerText = errorMessage;
-                });
+            // Пытаемся вызвать сканер
+            try {
+                if (scannerMethod === Telegram.WebApp.openQRScanner) {
+                    Telegram.WebApp.openQRScanner()
+                        .then(data => showResult(data))
+                        .catch(handleError);
+                } else {
+                    Telegram.WebApp.showScanQrPopup({ text: "Наведите на QR-код" });
+                    
+                    // Обработчик результата (для showScanQrPopup)
+                    Telegram.WebApp.onEvent('qrTextReceived', showResult);
+                }
+            } catch (e) {
+                handleError(e);
+            }
         }
 
-        // Развернуть MiniApp на весь экран (как в Wallet)
-        Telegram.WebApp.expand();
+        function showResult(data) {
+            document.getElementById("result").textContent = data;
+            Telegram.WebApp.showAlert("Отсканировано: " + data);
+        }
+
+        function handleError(err) {
+            const message = 
+                err === 'USER_DENIED' ? 'Вы отменили сканирование' :
+                err === 'CAMERA_UNAVAILABLE' ? 'Камера недоступна' :
+                'Ошибка: ' + err;
+            
+            Telegram.WebApp.showAlert(message);
+            document.getElementById("result").textContent = message;
+        }
     </script>
 </body>
 </html>
