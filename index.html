@@ -1,563 +1,451 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="h-full">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MilkShop - Молочные продукты от лучших производителей</title>
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-    
-    :root {
-      --primary: #3b82f6;
-      --secondary: #10b981;
-      --accent: #8b5cf6;
-      --dark: #1e293b;
-      --light: #f8fafc;
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-      color: var(--dark);
-      overflow-x: hidden;
-    }
-    
-    .hero-gradient {
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
-    }
-    
-    .glass {
-      backdrop-filter: blur(10px);
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    
-    .product-card {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      transform-origin: center;
-      background: white;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    }
-    
-    .product-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    }
-    
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    .fade-in.animate {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    .pulse {
-      animation: pulse 2s infinite;
-    }
-    
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-    
-    .gradient-text {
-      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    
-    .zoom-image {
-      transition: transform 0.3s ease;
-      background: #f8fafc;
-      object-fit: contain;
-    }
-    
-    .zoom-image:hover {
-      transform: scale(1.05);
-    }
-    
-    .show-more-btn {
-      background: linear-gradient(135deg, #3b82f6, #10b981);
-      transition: all 0.3s ease;
-    }
-    
-    .show-more-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
-    }
-    
-    .line-clamp-3 {
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-    
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-      gap: 1rem;
-    }
-    
-    @media (min-width: 640px) {
-      .products-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      }
-    }
-    
-    @media (min-width: 768px) {
-      .products-grid {
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      }
-    }
-    
-    @media (min-width: 1024px) {
-      .products-grid {
-        grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-      }
-    }
-    
-    .scan-line {
-      position: absolute;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, transparent, #3b82f6, transparent);
-      animation: scan 2s linear infinite;
-    }
-    
-    @keyframes scan {
-      0% { top: 0; }
-      100% { top: 100%; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Telegram Shop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body x-data="app()" x-init="init()">
-  <!-- Header -->
-  <header class="fixed top-0 left-0 right-0 z-50 glass backdrop-blur-md">
-    <div class="container mx-auto px-4 py-4">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center space-x-3">
-          <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-green-500 rounded-full flex items-center justify-center">
-            <i class="fas fa-glass-whiskey text-white text-xl"></i>
-          </div>
-          <h1 class="text-2xl font-bold gradient-text">MilkShop</h1>
-        </div>
-        
-        <nav class="hidden md:flex items-center space-x-8">
-          <a href="#home" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Главная</a>
-          <a href="#products" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Продукты</a>
-          <a href="#about" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">О нас</a>
-        </nav>
-        
-        <a href="https://t.me/Privoz58_bott" target="_blank" 
-           class="bg-gradient-to-r from-blue-500 to-green-500 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center space-x-2">
-          <i class="fab fa-telegram"></i>
-          <span>Заказать</span>
-        </a>
-      </div>
-    </div>
-  </header>
+<body class="h-full" x-data="app()" x-init="init()">
+    <div class="flex flex-col h-full bg-telegram-bg" style="max-height: 100vh;">
+        <!-- Floating search button -->
+        <button 
+            x-show="activeTab === 'shop' && !searchActive"
+            @click="searchActive = true"
+            class="fab bg-telegram-primary hover:bg-telegram-primary_hover text-white flex items-center justify-center smooth-transition
+           w-12 h-12 bottom-24 right-4" 
+        >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+        </button>
 
-  <!-- Hero Section -->
-  <section id="home" class="hero-gradient min-h-screen flex items-center pt-20">
-    <div class="container mx-auto px-4 py-20">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div class="space-y-8 fade-in">
-          <h1 class="text-5xl lg:text-7xl font-black leading-tight">
-            Свежие <span class="gradient-text">молочные</span> продукты<br>
-            <span class="text-4xl lg:text-6xl">от лучших производителей</span>
-          </h1>
-          <p class="text-xl text-gray-600 max-w-2xl">
-            Более 300 наименований молочной продукции от ведущих брендов региона. 
-            Весь ассортимент доступен в нашем Telegram-боте для удобного заказа.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4">
-            <a href="#products" 
-               class="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-center">
-              Смотреть ассортимент
-            </a>
-            <a href="https://t.me/Privoz58_bot" target="_blank"
-               class="bg-white text-blue-600 px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl border-2 border-blue-500 transform hover:scale-105 transition-all duration-300 text-center flex items-center justify-center space-x-2">
-              <i class="fab fa-telegram"></i>
-              <span>Заказать в Telegram</span>
-            </a>
-          </div>
+        <!-- Search bar -->
+        <div 
+            x-show="searchActive && activeTab === 'shop'"
+            x-transition:enter="transition ease-out duration-200"
+            x-transition:leave="transition ease-in duration-150"
+            class="bg-telegram-surface px-4 py-3 sticky top-0 z-20"
+        >
+            <div class="relative">
+                <input 
+                    x-model="searchQuery" 
+                    @input.debounce.300ms="searchProducts()"
+                    type="text" 
+                    placeholder="Поиск товаров..." 
+                    class="w-full bg-telegram-bg text-telegram-text rounded-lg py-2 px-10 input-field focus:outline-none"
+                    autofocus
+                >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-telegram-secondary_text absolute left-3 top-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <button 
+                    @click="searchActive = false; searchQuery = ''; searchProducts()" 
+                    class="absolute right-3 top-2.5 text-telegram-secondary_text hover:text-telegram-text smooth-transition"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
         </div>
-        
-        <div class="relative flex justify-center">
-          <div class="relative">
-            <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-green-400 rounded-3xl blur-3xl opacity-30 animate-pulse"></div>
-            <div class="relative bg-white rounded-3xl p-8 shadow-2xl">
-              <div class="text-center mb-6">
-                <h3 class="text-2xl font-bold text-gray-800 mb-2">Закажите в Telegram</h3>
-                <p class="text-gray-600">Отсканируйте QR-код или нажмите кнопку</p>
-              </div>
-              
-              <div class="relative w-64 h-64 mx-auto mb-6">
-                <div class="absolute inset-0 bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl p-2">
-                  <div class="w-full h-full bg-white rounded-xl flex items-center justify-center relative overflow-hidden">
-                    <img src="images/qr.png" alt="QR код для Telegram бота" class="w-48 h-48 object-contain">
-                    <div class="scan-line"></div>
-                  </div>
+
+        <!-- Bottom navigation -->
+        <div class="fixed bottom-0 left-0 right-0 bg-telegram-surface border-t border-telegram-divider flex justify-around py-2 z-10">
+            <button 
+                @click="activeTab = 'shop'; searchActive = false"
+                class="flex flex-col items-center justify-center p-2 text-telegram-secondary_text smooth-transition"
+                :class="{'text-telegram-accent': activeTab === 'shop'}"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+                <span class="text-xs mt-1">Магазин</span>
+            </button>
+            
+            <button 
+                @click="activeTab = 'categories'"
+                class="flex flex-col items-center justify-center p-2 text-telegram-secondary_text smooth-transition"
+                :class="{'text-telegram-accent': activeTab === 'categories'}"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <span class="text-xs mt-1">Категории</span>
+            </button>
+            
+            <button 
+                @click="activeTab = 'cart'"
+                class="flex flex-col items-center justify-center p-2 text-telegram-secondary_text smooth-transition relative"
+                :class="{'text-telegram-accent': activeTab === 'cart'}"
+            >
+                <div class="relative">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span 
+                        x-show="cart.length > 0" 
+                        x-text="cart.length" 
+                        class="absolute -top-2 -right-2 bg-telegram-primary text-white rounded-full w-5 h-5 flex items-center justify-center text-xs"
+                    ></span>
                 </div>
-              </div>
-              
-              <a href="https://t.me/Privoz58_bot" target="_blank"
-                 class="block w-full bg-gradient-to-r from-blue-500 to-green-500 text-white py-4 rounded-2xl font-bold text-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-center">
-                <i class="fab fa-telegram mr-2"></i>
-                Открыть бота
-              </a>
-            </div>
-          </div>
+                <span class="text-xs mt-1">Корзина</span>
+            </button>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Stats Section -->
-  <section class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-        <div class="fade-in">
-          <div class="text-4xl font-bold gradient-text">300+</div>
-          <div class="text-gray-600 mt-2">Наименований</div>
-        </div>
-        <div class="fade-in">
-          <div class="text-4xl font-bold gradient-text">25+</div>
-          <div class="text-gray-600 mt-2">Производителей</div>
-        </div>
-        <div class="fade-in">
-          <div class="text-4xl font-bold gradient-text">100%</div>
-          <div class="text-gray-600 mt-2">Свежесть</div>
-        </div>
-        <div class="fade-in">
-          <div class="text-4xl font-bold gradient-text">24/7</div>
-          <div class="text-gray-600 mt-2">Поддержка</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Products Section -->
-  <section id="products" class="py-20 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-16 fade-in">
-        <h2 class="text-4xl font-bold mb-4">Наш ассортимент</h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          Более 300 наименований молочной продукции от лучших производителей региона
-        </p>
-      </div>
-
-      <!-- Products Grid - Limited view -->
-      <div x-show="!showAll && !loading" class="mb-12">
-        <div class="products-grid">
-          <template x-for="(product, index) in limitedProducts" :key="product.id">
-            <div class="product-card">
-              <div class="aspect-square bg-gray-50 flex items-center justify-center p-2">
-                <img :src="'images/' + product.image" 
-                     :alt="product.name"
-                     class="w-full h-full object-contain zoom-image"
-                     @error="handleImageError($event)">
-              </div>
-              <div class="p-3">
-                <h3 class="font-medium text-gray-800 text-xs leading-tight line-clamp-3" 
-                    x-text="product.name"></h3>
-              </div>
-            </div>
-          </template>
-        </div>
-        
-        <div class="text-center mt-12">
-          <button @click="showAll = true" 
-                  class="show-more-btn text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transition-all duration-300">
-            Показать весь ассортимент (<span x-text="products.length"></span> товаров)
-            <i class="fas fa-arrow-down ml-2"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- Products Grid - Full view -->
-      <div x-show="showAll && !loading" class="fade-in">
-        <div class="products-grid">
-          <template x-for="product in products" :key="product.id">
-            <div class="product-card">
-              <div class="aspect-square bg-gray-50 flex items-center justify-center p-2">
-                <img :src="'images/' + product.image" 
-                     :alt="product.name"
-                     class="w-full h-full object-contain zoom-image"
-                     @error="handleImageError($event)">
-              </div>
-              <div class="p-3">
-                <h3 class="font-medium text-gray-800 text-xs leading-tight line-clamp-3" 
-                    x-text="product.name"></h3>
-              </div>
-            </div>
-          </template>
-        </div>
-        
-        <div class="text-center mt-12">
-          <button @click="showAll = false" 
-                  class="bg-gray-200 text-gray-700 px-8 py-3 rounded-full font-bold hover:bg-gray-300 transition-all duration-300">
-            Свернуть ассортимент
-            <i class="fas fa-arrow-up ml-2"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- Loading -->
-      <div x-show="loading" class="text-center py-12">
-        <div class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
-        <p class="mt-4 text-gray-600">Загрузка ассортимента...</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="py-20 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <div class="fade-in">
-          <h2 class="text-4xl font-bold mb-6">Почему выбирают <span class="gradient-text">MilkShop</span>?</h2>
-          <div class="space-y-6">
-            <div class="flex items-start space-x-4">
-              <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-leaf text-blue-600"></i>
-              </div>
-              <div>
-                <h3 class="text-xl font-bold mb-2">Свежесть гарантируем</h3>
-                <p class="text-gray-600">Все продукты поступают напрямую от производителей, обеспечивая максимальную свежесть</p>
-              </div>
+        <!-- Main content -->
+        <div class="flex-1 overflow-y-auto pb-16">
+            <!-- Shop Tab -->
+            <div x-show="activeTab === 'shop'" x-transition.opacity>
+                <div class="p-3">
+                    <template x-if="loading">
+                        <div class="flex flex-col items-center justify-center py-16">
+                            <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-telegram-accent"></div>
+                            <p class="mt-4 text-telegram-secondary_text">Загрузка товаров...</p>
+                        </div>
+                    </template>
+                    
+                    <template x-if="!loading && filteredProducts.length === 0">
+                        <div class="text-center py-16">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-telegram-secondary_text" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <h3 class="mt-4 text-lg font-medium text-telegram-text" x-text="searchQuery ? 'Ничего не найдено' : 'Товары не найдены'"></h3>
+                            <p class="mt-2 text-telegram-secondary_text" x-text="searchQuery ? 'Попробуйте изменить запрос' : 'Попробуйте обновить страницу'"></p>
+                        </div>
+                    </template>
+                    
+                    <div class="grid grid-cols-2 gap-3" x-show="!loading && filteredProducts.length > 0">
+                        <template x-for="product in visibleProducts" :key="product.id">
+                            <div class="bg-telegram-surface rounded-xl overflow-hidden shadow-md flex flex-col h-full">
+                                <div class="relative pb-[100%]">
+                                    <img 
+                                        :src="product.image ? 'images/' + product.image : 'images/noimage.webp'" 
+                                        :alt="product.name" 
+                                        loading="lazy" 
+                                        class="absolute h-full w-full object-cover"
+                                        onerror="this.src='images/noimage.webp'"
+                                    >
+                                </div>
+                                
+                                <div class="p-3 flex flex-col flex-grow">
+                                    <div class="flex-grow">
+                                        <h3 class="font-medium text-telegram-text text-sm mb-1" x-text="product.name"></h3>
+                                        <p class="text-telegram-secondary_text text-xs mb-2 line-clamp-2" x-text="product.description"></p>
+                                        <p class="text-telegram-accent text-sm font-semibold" x-text="'₽' + product.price.toFixed(2)"></p>
+                                    </div>
+                                    
+                                    <div class="mt-2">
+                                        <div class="flex items-center justify-center space-x-1">
+                                            <button 
+                                                @click="decrementCart(product.id)"
+                                                class="bg-telegram-primary hover:bg-telegram-primary_hover text-white rounded-lg w-7 h-7 flex items-center justify-center smooth-transition"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M20 12H4" />
+                                                </svg>
+                                            </button>
+                                            <input 
+                                                type="number" 
+                                                x-model="getProductCount(product.id)"
+                                                @change="updateCartQuantity(product.id, $event.target.value)"
+                                                @focus="if($event.target.value == 0) $event.target.value = ''"
+                                                @blur="if($event.target.value === '') $event.target.value = getProductById(product.id).minQuantity"
+                                                :min="getProductById(product.id).minQuantity"
+                                                :step="getProductStep(product.id)"
+                                                class="w-16 bg-telegram-bg border border-telegram-divider rounded-lg text-center text-telegram-text py-1 px-0 input-field text-sm"
+                                            >
+                                            <button 
+                                                @click="incrementCart(product.id)"
+                                                class="bg-telegram-primary hover:bg-telegram-primary_hover text-white rounded-lg w-7 h-7 flex items-center justify-center smooth-transition"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                    
+                    <div x-show="hasMoreProducts && !loading" class="text-center py-6">
+                        <button 
+                            @click="loadMoreProducts" 
+                            class="px-6 py-2 bg-telegram-surface hover:bg-opacity-80 text-telegram-accent rounded-full smooth-transition"
+                        >
+                            Показать еще
+                        </button>
+                    </div>
+                </div>
             </div>
             
-            <div class="flex items-start space-x-4">
-              <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-shield-alt text-green-600"></i>
-              </div>
-              <div>
-                <h3 class="text-xl font-bold mb-2">Качество под контролем</h3>
-                <p class="text-gray-600">Строгий контроль качества на всех этапах поставки продукции</p>
-              </div>
+            <!-- Categories Tab -->
+            <div x-show="activeTab === 'categories'" x-transition.opacity x-cloak>
+                <div class="p-3">
+                    <template x-if="loadingCategories">
+                        <div class="flex flex-col items-center justify-center py-16">
+                            <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-telegram-accent"></div>
+                            <p class="mt-4 text-telegram-secondary_text">Загрузка категорий...</p>
+                        </div>
+                    </template>
+                    
+                    <template x-if="!loadingCategories && categories.length === 0">
+                        <div class="text-center py-16">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-telegram-secondary_text" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <h3 class="mt-4 text-lg font-medium text-telegram-text">Категории не найдены</h3>
+                            <p class="mt-2 text-telegram-secondary_text">Попробуйте обновить страницу</p>
+                        </div>
+                    </template>
+                    
+                    <div class="grid grid-cols-2 gap-3" x-show="!loadingCategories && categories.length > 0">
+                        <template x-for="category in categories" :key="category.id">
+                            <div 
+                                @click="selectCategory(category)"
+                                class="bg-telegram-surface rounded-xl overflow-hidden shadow-md product-card cursor-pointer"
+                            >
+                                <div class="relative pb-[100%]">
+                                    <img 
+                                        :src="category.image ? 'images/' + category.image : 'images/noimage.webp'" 
+                                        :alt="category.name" 
+                                        loading="lazy" 
+                                        class="absolute h-full w-full object-cover"
+                                        onerror="this.src='images/noimage.webp'"
+                                    >
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="font-medium text-telegram-text text-sm text-center" x-text="category.name"></h3>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
             </div>
             
-            <div class="flex items-start space-x-4">
-              <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-robot text-purple-600"></i>
-              </div>
-              <div>
-                <h3 class="text-xl font-bold mb-2">Удобный заказ</h3>
-                <p class="text-gray-600">Весь ассортимент доступен в Telegram-боте с удобным интерфейсом</p>
-              </div>
+            <!-- Category Products Tab -->
+            <div x-show="activeTab === 'category-products'" x-transition.opacity x-cloak>
+                <div class="p-3">
+                    <div class="flex items-center mb-4 sticky top-0 bg-telegram-bg py-2 z-10">
+                        <button @click="activeTab = 'categories'" class="mr-2 text-telegram-accent">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                            </svg>
+                        </button>
+                        <h2 class="text-lg font-medium text-telegram-text" x-text="currentCategory.name"></h2>
+                    </div>
+                    
+                    <template x-if="filteredCategoryProducts.length === 0">
+                        <div class="text-center py-16">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-telegram-secondary_text" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <h3 class="mt-4 text-lg font-medium text-telegram-text">Товары не найдены</h3>
+                            <p class="mt-2 text-telegram-secondary_text">В этой категории пока нет товаров</p>
+                        </div>
+                    </template>
+                    
+                    <div class="grid grid-cols-2 gap-3" x-show="filteredCategoryProducts.length > 0">
+                        <template x-for="product in filteredCategoryProducts" :key="product.id">
+                            <div class="bg-telegram-surface rounded-xl overflow-hidden shadow-md flex flex-col h-full">
+                                <div class="relative pb-[100%]">
+                                    <img 
+                                        :src="product.image ? 'images/' + product.image : 'images/noimage.webp'" 
+                                        :alt="product.name" 
+                                        loading="lazy" 
+                                        class="absolute h-full w-full object-cover"
+                                        onerror="this.src='images/noimage.webp'"
+                                    >
+                                </div>
+                                
+                                <div class="p-3 flex flex-col flex-grow">
+                                    <div class="flex-grow">
+                                        <h3 class="font-medium text-telegram-text text-sm mb-1" x-text="product.name"></h3>
+                                        <p class="text-telegram-secondary_text text-xs mb-2 line-clamp-2" x-text="product.description"></p>
+                                        <p class="text-telegram-accent text-sm font-semibold" x-text="'₽' + product.price.toFixed(2)"></p>
+                                    </div>
+                                    
+                                    <div class="mt-2">
+                                        <div class="flex items-center justify-center space-x-1">
+                                            <button 
+                                                @click="decrementCart(product.id)"
+                                                class="bg-telegram-primary hover:bg-telegram-primary_hover text-white rounded-lg w-7 h-7 flex items-center justify-center smooth-transition"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M20 12H4" />
+                                                </svg>
+                                            </button>
+                                            <input 
+                                                type="number" 
+                                                x-model="getProductCount(product.id)"
+                                                @change="updateCartQuantity(product.id, $event.target.value)"
+                                                @focus="if($event.target.value == 0) $event.target.value = ''"
+                                                @blur="if($event.target.value === '') $event.target.value = getProductById(product.id).minQuantity"
+                                                :min="getProductById(product.id).minQuantity"
+                                                :step="getProductStep(product.id)"
+                                                class="w-16 bg-telegram-bg border border-telegram-divider rounded-lg text-center text-telegram-text py-1 px-0 input-field text-sm"
+                                            >
+                                            <button 
+                                                @click="incrementCart(product.id)"
+                                                class="bg-telegram-primary hover:bg-telegram-primary_hover text-white rounded-lg w-7 h-7 flex items-center justify-center smooth-transition"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        
-        <div class="relative fade-in">
-          <div class="bg-gradient-to-r from-blue-500 to-green-500 rounded-3xl p-8 text-white">
-            <h3 class="text-2xl font-bold mb-4">Как сделать заказ?</h3>
-            <div class="space-y-4">
-              <div class="flex items-center space-x-3">
-                <div class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                  <span class="font-bold">1</span>
+            
+            <!-- Cart Tab -->
+            <div x-show="activeTab === 'cart'" x-transition.opacity x-cloak>
+                <div x-show="cart.length > 0" class="p-3">
+                    <div class="space-y-3 mb-4">
+                        <template x-for="item in cart" :key="item.id">
+                            <div class="flex items-center bg-telegram-surface rounded-xl p-3">
+                                <div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+                                    <img 
+                                        :src="'images/' + (getProductById(item.id).image || 'noimage.webp')"
+                                        @error="$event.target.src='images/noimage.webp'" 
+                                        :alt="getProductById(item.id).name" 
+                                        class="w-full h-full object-cover"
+                                    >
+                                </div>
+                                
+                                <div class="ml-3 flex-1 min-w-0">
+                                    <h3 class="font-medium text-telegram-text text-sm" x-text="getProductById(item.id).name"></h3>
+                                    <p class="text-telegram-accent text-sm font-semibold mt-1" x-text="'₽' + (getProductById(item.id).price * item.quantity).toFixed(2)"></p>
+                                </div>
+                                
+                                <div class="ml-2 flex items-center">
+                                    <button 
+                                        @click="removeFromCart(item.id)"
+                                        class="text-telegram-secondary_text hover:text-telegram-error smooth-transition mr-2"
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                        </svg>
+                                    </button>
+                                    
+                                    <input 
+                                        type="number" 
+                                        x-model="item.quantity"
+                                        @change="updateCartQuantity(item.id, $event.target.value)"
+                                        :min="getProductById(item.id).minQuantity"
+                                        :step="getProductStep(item.id)"
+                                        class="w-16 bg-telegram-bg border border-telegram-divider rounded-lg text-center text-telegram-text py-1.5 input-field"
+                                    >
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+
+                    <div class="bg-telegram-surface rounded-xl p-4 mb-4">
+                        <div class="text-telegram-text text-sm">
+                            <p>Доставка осуществляется с 10:00 до 22:00. Минимальная сумма заказа — 500 ₽.</p>
+                            <p class="mt-2">Оплата возможна наличными или картой при получении.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-telegram-surface rounded-xl p-4 mb-4">
+                        <h3 class="font-medium text-telegram-text mb-3">Дата получения</h3>
+                        
+                        <div class="space-y-2">
+                            <label class="flex items-center space-x-3 cursor-pointer">
+                                <input 
+                                    type="radio" 
+                                    name="delivery_date" 
+                                    x-model="deliveryDate" 
+                                    value="today" 
+                                    class="custom-radio"
+                                >
+                                <span class="text-telegram-text">Сегодня</span>
+                            </label>
+                            
+                            <label class="flex items-center space-x-3 cursor-pointer">
+                                <input 
+                                    type="radio" 
+                                    name="delivery_date" 
+                                    x-model="deliveryDate" 
+                                    value="tomorrow" 
+                                    class="custom-radio"
+                                >
+                                <span class="text-telegram-text">Завтра</span>
+                            </label>
+                            
+                            <label class="flex items-center space-x-3 cursor-pointer">
+                                <input 
+                                    type="radio" 
+                                    name="delivery_date" 
+                                    x-model="deliveryDate" 
+                                    value="custom" 
+                                    class="custom-radio"
+                                >
+                                <span class="text-telegram-text">Выбрать дату</span>
+                            </label>
+                            
+                            <div x-show="deliveryDate === 'custom'" class="pl-7 mt-2">
+                                <input 
+                                    type="date" 
+                                    x-model="customDate"
+                                    class="w-full bg-telegram-bg border border-telegram-divider rounded-lg py-2 px-3 text-telegram-text input-field"
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-telegram-surface rounded-xl p-4 mb-4">
+                        <h3 class="font-medium text-telegram-text mb-2">Комментарий</h3>
+                        <textarea 
+                            x-model="orderComment"
+                            placeholder="Ваши пожелания..." 
+                            class="w-full bg-telegram-bg border border-telegram-divider rounded-lg py-2 px-3 text-telegram-text input-field h-20"
+                        ></textarea>
+                    </div>
+                    
+                    <div class="bg-telegram-surface rounded-xl p-4">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-telegram-text font-medium">Итого:</span>
+                            <span class="text-telegram-accent text-xl font-bold" x-text="'₽' + totalAmount.toFixed(2)"></span>
+                        </div>
+                        <button 
+                            @click="processOrder" 
+                            class="w-full bg-telegram-primary hover:bg-telegram-primary_hover text-white py-3 rounded-xl font-medium flex items-center justify-center smooth-transition"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            Оформить заказ
+                        </button>
+                    </div>
                 </div>
-                <span>Откройте наш Telegram-бот</span>
-              </div>
-              <div class="flex items-center space-x-3">
-                <div class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                  <span class="font-bold">2</span>
+                
+                <div x-show="cart.length === 0" class="flex flex-col items-center justify-center py-16 px-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-telegram-secondary_text" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    <h3 class="mt-4 text-lg font-medium text-telegram-text">Корзина пуста</h3>
+                    <p class="mt-1 text-telegram-secondary_text text-center">Добавьте товары из магазина</p>
+                    <button 
+                        @click="activeTab = 'shop'" 
+                        class="mt-6 bg-telegram-primary hover:bg-telegram-primary_hover text-white py-2 px-6 rounded-lg smooth-transition"
+                    >
+                        В магазин
+                    </button>
                 </div>
-                <span>Выберите нужные продукты</span>
-              </div>
-              <div class="flex items-center space-x-3">
-                <div class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                  <span class="font-bold">3</span>
-                </div>
-                <span>Оформите заказ одним кликом</span>
-              </div>
-              <div class="flex items-center space-x-3">
-                <div class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                  <span class="font-bold">4</span>
-                </div>
-                <span>Заберите в удобное время</span>
-              </div>
             </div>
-            <a href="https://t.me/Privoz58_bot" target="_blank"
-               class="mt-6 bg-white text-blue-600 px-6 py-3 rounded-full font-bold inline-flex items-center space-x-2 hover:shadow-lg transform hover:scale-105 transition-all duration-300">
-              <i class="fab fa-telegram"></i>
-              <span>Открыть бота</span>
-            </a>
-          </div>
         </div>
-      </div>
     </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="py-20 hero-gradient">
-    <div class="container mx-auto px-4 text-center">
-      <div class="max-w-3xl mx-auto fade-in">
-        <h2 class="text-4xl lg:text-5xl font-bold mb-6">
-          Готовы попробовать наши <span class="gradient-text">молочные продукты</span>?
-        </h2>
-        <p class="text-xl text-gray-600 mb-8">
-          Весь ассортимент доступен в Telegram-боте. Удобный интерфейс, быстрое оформление заказа и свежие продукты!
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="https://t.me/Privoz58_bot" target="_blank"
-             class="bg-gradient-to-r from-blue-500 to-green-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center space-x-2 pulse">
-            <i class="fab fa-telegram"></i>
-            <span>Заказать в Telegram</span>
-          </a>
-          <a href="#products" 
-             class="bg-white text-blue-600 px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl border-2 border-blue-500 transform hover:scale-105 transition-all duration-300">
-            Посмотреть ассортимент
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-16">
-    <div class="container mx-auto px-4">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-        <div>
-          <div class="flex items-center space-x-3 mb-4">
-            <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-green-500 rounded-full flex items-center justify-center">
-              <i class="fas fa-glass-whiskey text-white"></i>
-            </div>
-            <h3 class="text-2xl font-bold">MilkShop</h3>
-          </div>
-          <p class="text-gray-400 mb-4">
-            Ваш надежный дистрибьютор молочной продукции от лучших производителей региона.
-          </p>
-          <div class="flex space-x-4">
-            <a href="#" class="text-gray-400 hover:text-white transition-colors">
-              <i class="fab fa-telegram text-2xl"></i>
-            </a>
-            <a href="#" class="text-gray-400 hover:text-white transition-colors">
-              <i class="fab fa-vk text-2xl"></i>
-            </a>
-            <a href="#" class="text-gray-400 hover:text-white transition-colors">
-              <i class="fab fa-instagram text-2xl"></i>
-            </a>
-          </div>
-        </div>
-        
-        <div>
-          <h4 class="text-lg font-bold mb-4">Навигация</h4>
-          <ul class="space-y-2">
-            <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">Главная</a></li>
-            <li><a href="#products" class="text-gray-400 hover:text-white transition-colors">Продукты</a></li>
-            <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">О нас</a></li>
-          </ul>
-        </div>
-        
-        <div>
-          <h4 class="text-lg font-bold mb-4">Контакты</h4>
-          <ul class="space-y-2 text-gray-400">
-            <li class="flex items-center space-x-2">
-              <i class="fas fa-phone"></i>
-              <span>+7 (3452) 123-456</span>
-            </li>
-            <li class="flex items-center space-x-2">
-              <i class="fas fa-envelope"></i>
-              <span>info@milkshop.ru</span>
-            </li>
-            <li class="flex items-center space-x-2">
-              <i class="fas fa-map-marker-alt"></i>
-              <span>г. Тюмень, ул. Молочная, 15</span>
-            </li>
-          </ul>
-        </div>
-        
-        <div>
-          <h4 class="text-lg font-bold mb-4">Режим работы</h4>
-          <ul class="space-y-2 text-gray-400">
-            <li>Пн-Пт: 9:00 - 18:00</li>
-            <li>Сб: 10:00 - 16:00</li>
-            <li>Вс: выходной</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-        <p>&copy; 2025 MilkShop. Все права защищены.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    function app() {
-      return {
-        showAll: false,
-        loading: true,
-        products: [],
-        displayedProducts: [],
-        
-        init() {
-          // Загружаем данные из products.json
-          fetch('products.json')
-            .then(response => {
-              if (!response.ok) {
-                throw new Error('Network response was not ok');
-              }
-              return response.json();
-            })
-            .then(data => {
-              this.products = data;
-              this.displayedProducts = this.products.slice(0, 16);
-              this.loading = false;
-              this.animateElements();
-            })
-            .catch(error => {
-              console.error('Ошибка загрузки products.json:', error);
-              this.loading = false;
-            });
-        },
-        
-        get limitedProducts() {
-          return this.products.slice(0, 16);
-        },
-        
-        handleImageError(event) {
-          event.target.src = 'image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9IiNlNWU3ZWIiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSIyMCIgZmlsbD0iI2M1YzZjYi8+PHBhdGggZD0iTTQwIDU1TDYwIDU1TDUwIDcwWiIgZmlsbD0iI2E1YTVhNSIvPjwvc3ZnPg==';
-        },
-        
-        animateElements() {
-          const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
-              }
-            });
-          }, { threshold: 0.1 });
-          
-          document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-        }
-      }
-    }
-    
-    // Прокрутка к верху при загрузке страницы
-    document.addEventListener('DOMContentLoaded', function() {
-      window.scrollTo(0, 0);
-    });
-  </script>
 </body>
 </html>
